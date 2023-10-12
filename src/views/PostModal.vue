@@ -1,5 +1,5 @@
 <template>
-  <h1>PostModal</h1>
+  <h1 class="w-fit mx-auto text-3xl font-bold my-5">PostModal</h1>
   <div class="w-full flex flex-col gap-y-10 items-center">
     <PostComponent v-for="post in posts" :key="post.id" :post="post" />
   </div>
