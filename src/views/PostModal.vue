@@ -1,15 +1,30 @@
 <template>
   <h1 class="w-fit mx-auto text-3xl font-bold my-5">PostModal</h1>
-  <div class="w-full flex flex-col gap-y-10 items-center">
-    <PostComponent v-for="post in posts" :key="post.id" :post="post" />
-  </div>
+  <PostModal
+    :modalStatus="modalStatus"
+    :modalDetails="modalDetails"
+    @closeModal="modalStatus = false"
+  />
 
+  <div class="w-full flex flex-col gap-y-10 items-center">
+    <div
+      v-for="post in posts"
+      :key="post.id"
+      @click="openModal($event)"
+      class="w-3/5 space-y-5 px-10 pt-5 pb-10 shadow-md cursor-pointer hover:scale-105 transition-transform duration-300 ease-linear"
+    >
+      <PostComponent :post="post" />
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import PostComponent from "../components/post/PostComponent.vue";
+import PostModal from "../components/post/PostModal.vue";
 
+const modalStatus = ref(false);
+const modalDetails = ref(null);
 const posts = ref([
   {
     id: "1",
@@ -177,4 +192,10 @@ const posts = ref([
     comments: [],
   },
 ]);
+
+const openModal = (idx) => {
+  console.log(idx);
+  modalDetails.value = posts.value[idx];
+  modalStatus.value = true;
+};
 </script>
