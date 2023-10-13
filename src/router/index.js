@@ -5,14 +5,14 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "PostModal",
-      component: () => import("../views/PostModal.vue"),
+      name: "PostView",
+      component: () => import("../views/PostView.vue"),
     },
     {
-        path: "/:catchAll(.*)",
-        name: "NotFound",
-        component: () => import("../views/NotFound.vue"),
-    }
+      path: "/:catchAll(.*)",
+      name: "NotFound",
+      component: () => import("../views/NotFound.vue"),
+    },
   ],
 });
 

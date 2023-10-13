@@ -2,7 +2,7 @@
   <div
     :class="[
       [!modalStatus ? 'hidden' : 'flex'],
-      'w-screen h-screen bg-gray-800/25 fixed top-0',
+      'w-screen h-screen bg-gray-800/25 fixed top-0 z-20',
     ]"
     @click="closeModal"
   >

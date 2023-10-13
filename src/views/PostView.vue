@@ -8,10 +8,10 @@
 
   <div class="w-full flex flex-col gap-y-10 items-center">
     <div
-      v-for="post in posts"
+      v-for="(post, idx) in posts"
       :key="post.id"
-      @click="openModal($event)"
-      class="w-3/5 space-y-5 px-10 pt-5 pb-10 shadow-md cursor-pointer hover:scale-105 transition-transform duration-300 ease-linear"
+      @click="openModal(idx)"
+      class="w-4/5 lg:w-3/5 space-y-5 px-10 pt-5 pb-10 shadow-md cursor-pointer hover:scale-105 transition-transform z-10 duration-300 ease-linear"
     >
       <PostComponent :post="post" />
     </div>
@@ -194,7 +194,6 @@ const posts = ref([
 ]);
 
 const openModal = (idx) => {
-  console.log(idx);
   modalDetails.value = posts.value[idx];
   modalStatus.value = true;
 };
