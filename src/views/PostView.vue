@@ -24,7 +24,17 @@ import PostComponent from "../components/post/PostComponent.vue";
 import PostModal from "../components/post/PostModal.vue";
 
 const modalStatus = ref(false);
-const modalDetails = ref(null);
+const modalDetails = ref({
+  id: "",
+  profile: {
+    fullName: "",
+    userName: "",
+    img: "",
+  },
+  content: "",
+  likeNumber: "",
+  comments: [],
+});
 const posts = ref([
   {
     id: "1",
