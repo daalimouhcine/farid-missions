@@ -12,7 +12,8 @@
       </div>
     </div>
     <div class="flex items-center">
-      <TimeIcon />
+      <svg-icon type="mdi" :path="mdiClockTimeEightOutline"></svg-icon>
+
       <p class="text-xs">10h</p>
     </div>
   </div>
@@ -24,8 +25,8 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import TimeIcon from "../../icon/TimeIcon.vue";
+import SvgIcon from "@jamescoyle/vue-icon";
+import { mdiClockTimeEightOutline } from "@mdi/js";
 
 const props = defineProps(["post"]);
 </script>
