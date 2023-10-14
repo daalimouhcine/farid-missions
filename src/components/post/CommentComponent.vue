@@ -58,7 +58,6 @@
           @click="toggleOpenResponse"
         >
           <svg-icon type="mdi" :path="mdiClose" class="w-4 h-4"></svg-icon>
-          <p class="text-xs">Cancel</p>
         </button>
       </form>
       <div
