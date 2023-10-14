@@ -1,5 +1,6 @@
 <template>
   <form
+    @submit.prevent="submitComment"
     class="flex gap-x-4 content-center items-center w-full h-16 px-4 py-3 shadow-md"
   >
     <img
@@ -13,6 +14,7 @@
       id="comment"
       placeholder="Add a comment to this post"
       class="w-full h-full text-sm bg-transparent outline-none"
+      v-model="commentInput"
     />
     <button
       type="submit"
@@ -25,6 +27,13 @@
 </template>
 
 <script setup>
+import {ref} from "vue";
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiPencilOutline } from "@mdi/js";
+
+const commentInput = ref("");
+const submitComment = () => {
+  alert(commentInput.value);
+  commentInput.value = "";
+};
 </script>

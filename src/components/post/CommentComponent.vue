@@ -39,6 +39,7 @@
           id="comment"
           placeholder="Write a response..."
           class="w-full h-full text-sm bg-transparent outline-none"
+          v-model="responseInput"
         />
         <button
           type="submit"
@@ -102,7 +103,7 @@ const toggleOpenResponse = () => {
 };
 
 const submitResponse = () => {
-  console.log(responseInput.value);
+  alert(responseInput.value);
   responseInput.value = "";
   toggleOpenResponse();
 };
