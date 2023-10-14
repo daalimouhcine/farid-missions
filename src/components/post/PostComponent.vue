@@ -13,7 +13,6 @@
     </div>
     <div class="flex items-center">
       <svg-icon type="mdi" :path="mdiClockTimeEightOutline"></svg-icon>
-
       <p class="text-xs">10h</p>
     </div>
   </div>

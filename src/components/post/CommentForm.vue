@@ -18,7 +18,7 @@
     />
     <button
       type="submit"
-      class="flex gap-x-1 items-center bg-amber-800 hover:bg-amber-700 transition-colors text-gray-100 font-semibold py-1.5 px-3 rounded-lg"
+      class="flex gap-x-1 items-center bg-amber-800 hover:bg-amber-700 transition-colors text-gray-100 font-semibold py-1.5 px-1 sm:px-3 rounded-lg"
     >
       <svg-icon type="mdi" :path="mdiPencilOutline" class="w-5 h-5"></svg-icon>
       <p class="text-sm">comment</p>

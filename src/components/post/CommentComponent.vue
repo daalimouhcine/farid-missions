@@ -25,13 +25,13 @@
     <div
       class="w-full flex flex-col gap-y-1 items-center border-l-2 border-gray-300 ml-4 px-3"
     >
-      <p class="mt-2 w-full">
+      <p class="text-xs md:text-base mt-2 w-full">
         {{ commentDetails.content }}
       </p>
       <form
         v-if="openResponse"
         @submit.prevent="submitResponse"
-        class="flex gap-x-4 content-center items-center w-full h-10 px-4 py-3 shadow-md"
+        class="flex gap-x-1 sm:gap-x-4 content-center items-center w-full h-10 px-4 py-3 shadow-md"
       >
         <input
           type="text"
@@ -43,7 +43,7 @@
         />
         <button
           type="submit"
-          class="flex gap-x-1 items-center bg-amber-800 hover:bg-amber-700 transition-colors text-gray-100 font-semibold py-1.5 px-2 rounded-lg"
+          class="flex gap-x-1 items-center bg-amber-800 hover:bg-amber-700 transition-colors text-gray-100 font-semibold py-1.5 px-1 sm:px-2 rounded-lg"
         >
           <svg-icon
             type="mdi"
@@ -54,7 +54,7 @@
         </button>
         <button
           type="button"
-          class="flex gap-x-1 items-center bg-red-800 hover:bg-red-700 transition-colors text-gray-100 font-semibold py-1.5 px-2 rounded-lg"
+          class="flex gap-x-1 items-center bg-red-800 hover:bg-red-700 transition-colors text-gray-100 font-semibold py-1.5 px-1 sm:px-2 rounded-lg"
           @click="toggleOpenResponse"
         >
           <svg-icon type="mdi" :path="mdiClose" class="w-4 h-4"></svg-icon>

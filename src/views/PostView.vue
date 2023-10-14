@@ -11,7 +11,7 @@
       v-for="(post, idx) in posts"
       :key="post.id"
       @click="openModal(idx)"
-      class="w-4/5 lg:w-3/5 space-y-5 px-10 pt-5 pb-10 shadow-md cursor-pointer hover:scale-105 transition-transform z-10 duration-300 ease-linear"
+      class="w-[97vw] sm:w-4/5 lg:w-3/5 space-y-5 px-3 md:px-10 pt-3 md:pt-5 pb-5 md:pb-10 shadow-md cursor-pointer hover:scale-105 transition-transform z-10 duration-300 ease-linear"
     >
       <PostComponent :post="post" />
     </div>
