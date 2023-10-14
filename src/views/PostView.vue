@@ -48,6 +48,7 @@ const posts = ref([
     likeNumber: "278",
     comments: [
       {
+        id: "1",
         profile: {
           fullName: "Hilo Baylouni",
           img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
@@ -57,6 +58,7 @@ const posts = ref([
         likeNumber: "36",
         responses: [
           {
+            id: "1",
             profile: {
               fullName: "Hilo Baylouni",
               img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
@@ -66,6 +68,7 @@ const posts = ref([
             likeNumber: "36",
           },
           {
+            id: "2",
             profile: {
               fullName: "Mouhcine Daali",
               img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
@@ -75,6 +78,7 @@ const posts = ref([
             likeNumber: "36",
           },
           {
+            id: "3",
             profile: {
               fullName: "Hilo Baylouni",
               img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
@@ -86,6 +90,7 @@ const posts = ref([
         ],
       },
       {
+        id: "2",
         profile: {
           fullName: "Hilo Baylouni",
           img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
@@ -96,6 +101,7 @@ const posts = ref([
         responses: [],
       },
       {
+        id: "3",
         profile: {
           fullName: "Hilo Baylouni",
           img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
@@ -129,6 +135,7 @@ const posts = ref([
     likeNumber: "278",
     comments: [
       {
+        id: "1",
         profile: {
           fullName: "Hilo Baylouni",
           img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
@@ -138,6 +145,7 @@ const posts = ref([
         likeNumber: "36",
         responses: [
           {
+            id: "1",
             profile: {
               fullName: "Mouhcine Daali",
               img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
@@ -147,6 +155,7 @@ const posts = ref([
             likeNumber: "36",
           },
           {
+            id: "2",
             profile: {
               fullName: "Hilo Baylouni",
               img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
@@ -158,6 +167,7 @@ const posts = ref([
         ],
       },
       {
+        id: "2",
         profile: {
           fullName: "Hilo Baylouni",
           img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
@@ -168,6 +178,7 @@ const posts = ref([
         responses: [],
       },
       {
+        id: "3",
         profile: {
           fullName: "Hilo Baylouni",
           img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
@@ -177,6 +188,7 @@ const posts = ref([
         likeNumber: "36",
         responses: [
           {
+            id: "1",
             profile: {
               fullName: "Mouhcine Daali",
               img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",

@@ -75,8 +75,22 @@
           @click="toggleOpenResponse"
         >
           <svg-icon type="mdi" :path="mdiPencilOutline" class="w-5"></svg-icon>
-          <p class="text-xs mt-auto">{{ commentDetails.responses.length }}</p>
+          <p class="text-xs mt-auto">
+            {{
+              commentDetails.responses ? commentDetails.responses.length : "0"
+            }}
+          </p>
         </div>
+      </div>
+      <div
+        class="w-full"
+        v-for="response in commentDetails.responses"
+        :key="response.id"
+      >
+        <CommentComponent
+          v-if="commentDetails.responses.length > 0"
+          :commentDetails="response"
+        />
       </div>
     </div>
   </div>
