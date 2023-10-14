@@ -73,7 +73,7 @@
         </div>
         <CommentForm />
       </div>
-      <div class="w-full mt-2 overflow-y-scroll">
+      <div class="w-full mt-2 overflow-y-scroll mb-7">
         <h4 class="font-semibold">Comments</h4>
         <CommentComponent
           v-for="comment in modalDetails.comments"
