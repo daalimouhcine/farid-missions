@@ -6,7 +6,7 @@
     ]"
   >
     <div
-      class="relative font-serif w-4/5 lg:w-3/5 max-h-[98vh] px-10 py-5 m-auto bg-white rounded-lg shadow-lg flex flex-col items-center"
+      class="relative font-serif w-[98vw] sm:w-4/5 lg:w-3/5 max-h-[98vh] px-3 md:px-10 py-5 m-auto bg-white rounded-lg shadow-lg flex flex-col items-center"
     >
       <div
         class="absolute top-2 right-2 bg-zinc-500 px-0.5 py-2 rounded-md text-gray-100 hover:bg-zinc-700"
@@ -18,7 +18,7 @@
         class="w-fit flex items-center gap-x-2 bg-stone-300 px-5 py-1 pr-7 mr-auto rounded-t-md"
       >
         <svg-icon type="mdi" :path="mdiClockTimeEightOutline"></svg-icon>
-        <h6 class="text-sm">
+        <h6 class="text-xs md:text-sm">
           This post is temporary, and will disappear at te end of the day
         </h6>
       </div>
@@ -50,7 +50,7 @@
             </div>
           </div>
           <div class="w-full">
-            <p class="px-2">
+            <p class="px-2 text-xs md:text-base">
               {{ modalDetails.content }}
             </p>
           </div>
