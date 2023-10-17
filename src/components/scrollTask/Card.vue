@@ -8,19 +8,19 @@
     <div
       :class="{
         '-translate-x-12': isScrolled,
-        'w-1/12 max-sm:-translate-x-16 max-md:-translate-x-20 -translate-x-24':true}"
+        'w-1/12 max-sm:-translate-x-16 max-md:-translate-x-20 -translate-x-24 transition-all duration-300 ease-linear':true}"
     >
       <img
         src="https://images.unsplash.com/photo-1633332755192-727a05c4013d"
         :class="{
             'w-16 h-16 my-5': isScrolled,
-             'max-sm:w-20 max-md:w-28 w-36 max-w-max rounded-md': true }"
+             'max-sm:w-20 max-md:w-28 w-36 max-w-max rounded-md transition-all duration-300 ease-linear': true }"
       />
     </div>
     <div
       :class="{
         'max-md:mt-0 mt-0': isScrolled,
-        'w-full space-y-3 max-md:mt-7 mt-10': true,
+        'w-full space-y-3 max-md:mt-7 mt-10 transition-all duration-300 ease-linear': true,
       }"
     >
       <div class="flex gap-x-5 justify-between items-center">
