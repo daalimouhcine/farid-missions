@@ -1,4 +1,7 @@
 <template>
+  <router-link to="/scroll-task" class="w-fit mx-auto">
+    ScrollTask
+  </router-link>
   <h1 class="w-fit mx-auto text-3xl font-bold my-5">PostModal</h1>
   <PostModal
     :modalStatus="modalStatus"
