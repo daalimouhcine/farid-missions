@@ -1,13 +1,11 @@
 <template>
   <!-- class="relative flex justify-center items-center max-sm:gap-x-0 gap-x-5 w-full border-y" -->
   <div
-    :class="{
-      'sticky top-0 flex justify-center items-center max-sm:gap-x-0 gap-x-5 w-full border-y': true,
-    }"
+    class="sticky top-0 flex justify-center items-center max-sm:gap-x-0 gap-x-5 w-full border-y border-gray-300"
   >
     <div
       :class="{
-        '-translate-x-12': isScrolled,
+        '-translate-x-14': isScrolled,
         'max-sm:-translate-x-16 max-md:-translate-x-20 -translate-x-24':
           !isScrolled,
         'w-1/12 transition-all duration-300 ease-linear': true,
@@ -52,10 +50,10 @@
         </p>
       </div>
       <div v-if="!isScrolled" class="w-full flex h-14">
-        <button class="flex-1 border-r appearance-none">1.5K ********</button>
-        <button class="flex-1 border-r appearance-none">150 ********</button>
-        <button class="flex-1 border-r appearance-none">1K ********</button>
-        <button class="flex-1 appearance-none">15 ********</button>
+        <button class="flex-1 border-r appearance-none hover:bg-gray-200 transition-colors duration-200 ease-linear">1.5K ********</button>
+        <button class="flex-1 border-r appearance-none hover:bg-gray-200 transition-colors duration-200 ease-linear">150 ********</button>
+        <button class="flex-1 border-r appearance-none hover:bg-gray-200 transition-colors duration-200 ease-linear">1K ********</button>
+        <button class="flex-1 appearance-none hover:bg-gray-200 transition-colors duration-200 ease-linear">15 ********</button>
       </div>
     </div>
   </div>

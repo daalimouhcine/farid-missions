@@ -4,9 +4,9 @@
       <!-- Left content -->
     </div>
     <div
-      class="max-sm:w-10/12 max-md:w-9/12 w-6/12 bg-red-200 max-md:mr-0 max-md:-translate-x-2 mx-auto -translate-x-[5vw] border-x-2 px-5 border-black"
+      class="max-sm:w-10/12 max-md:w-9/12 w-6/12 bg-gray-100 max-md:mr-0 max-md:-translate-x-2 mx-auto -translate-x-[5vw] border-x-[4px] px-5 border-gray-300"
     >
-      <div class="w-full h-[200vh] my-5 ">
+      <div class="w-full h-[200vh] my-5">
         <!-- the scrollable content goes here -->
         <Card />
       </div>
