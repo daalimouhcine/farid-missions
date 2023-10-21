@@ -2,28 +2,29 @@
   <div class="flex gap-x-5">
     <div class="fixed left-0 w-1/12 max-sm:hidden h-screen bg-blue-200">
       <!-- Left content -->
+      {{ currentItem }} dsdf
     </div>
     <div
       class="max-sm:w-10/12 max-md:w-9/12 w-6/12 bg-gray-100 max-md:mr-0 max-md:-translate-x-2 mx-auto -translate-x-[5vw] border-x-[4px] px-5 border-gray-300"
     >
-      <div class="post-container w-full min-h-screen my-5 space-y-10">
+      <div class="item-container w-full min-h-screen my-5 space-y-10">
         <Card />
         <!-- the scrollable content goes here -->
         <div
-          v-for="(post, idx) in posts"
-          :key="post.id"
+          v-for="(_, idx) in Array(10).fill(0)"
+          :key="idx"
           @click="openModal(idx)"
           class="relative w-full space-y-5 px-3 md:px-10 pt-3 md:pt-5 pb-5 md:pb-10 shadow-md cursor-pointer"
         >
           <div
             class="w-1 rounded-full h-full absolute top-0 left-0 -translate-x-6"
             :class="{
-              'bg-[#711112]': currentPost === post.id,
-              'bg-[#CCADAF]': currentPost !== post.id,
+              'bg-[#711112]': currentItem == idx,
+              'bg-[#CCADAF]': currentItem != idx,
             }"
           >
             <div
-              v-if="currentPost === post.id"
+              v-if="currentItem == idx"
               class="w-fit h-fit absolute -top-4 -translate-x-1/2 ml-0.5"
             >
               <OpenBookIcon />
@@ -35,8 +36,8 @@
               <CloseBookIcon />
             </div>
           </div>
-          <div class="post" :id="post.id">
-            <PostComponent :post="post" />
+          <div class="item h-40 w-full bg-zinc-600" :id="idx">
+            <!-- <PostComponent :post="post" /> -->
           </div>
         </div>
       </div>
@@ -49,287 +50,33 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import PostComponent from "../components/post/PostComponent.vue";
 import Card from "../components/scrollTask/Card.vue";
 import OpenBookIcon from "../icons/OpenBookIcon.vue";
 import CloseBookIcon from "../icons/CloseBookIcon.vue";
 
-const posts = ref([
-  {
-    id: "1",
-    profile: {
-      fullName: "Jon Tyson",
-      userName: "@jontyson",
-      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    content:
-      "Novo denique perniciosoque exemplo idem Gallus ausus est inire flagitium grave, quod Romae cum ultimo dedecore temptasse aliquando dicitur Gallienus, et adhibitis paucis clam ferro succinctis vesperi per tabernas palabatur et conpita quaeritando Graeco sermone, cuius erat inpendio gnarus, quid de Caesare quisque sentiret. et haec confidenter agebat in urbe ubi pernoctantium luminum claritudo dierum solet imitari fulgorem. postremo agnitus saepe iamque, si prodisset, conspicuum se fore contemplans, non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
-    likeNumber: "278",
-    comments: [
-      {
-        id: "1",
-        profile: {
-          fullName: "Hilo Baylouni",
-          img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-        },
-        content:
-          "Novo denique perniciosoque exemplo idem Gallus ausus est inire flagitium grave, quod Romae cum ultimo dedecore temptasse aliquando dicitur Gallienus, et adhibitis paucis clam ferro succinctis vesperi per tabernas palabatur et conpita quaeritando Graeco sermone, cuius erat inpendio gnarus",
-        likeNumber: "36",
-        responses: [
-          {
-            id: "1",
-            profile: {
-              fullName: "Hilo Baylouni",
-              img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-            },
-            content:
-              "Novo denique p inire flagitium grave, quod Romae cum ultimo dedecore temptasse aliquando dicitur Gallienus, et adhibitis paucis clam ferro succinctis vesperi per tabernas palabatur et conpita quaeritando Graeco sermone, cuius erat inpendio gnarus",
-            likeNumber: "36",
-          },
-          {
-            id: "2",
-            profile: {
-              fullName: "Mouhcine Daali",
-              img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-            },
-            content:
-              "se aliquando dicitur Gallienusraeco sermone, cuius erat inpendio gnarus",
-            likeNumber: "36",
-          },
-          {
-            id: "3",
-            profile: {
-              fullName: "Hilo Baylouni",
-              img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-            },
-            content:
-              "Novo denique perniciosoqueur Gallienus, et adhibitis paucis claarus",
-            likeNumber: "36",
-          },
-        ],
-      },
-      {
-        id: "2",
-        profile: {
-          fullName: "Hilo Baylouni",
-          img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-        },
-        content:
-          "Et adhibitis paucis clam ferro succinctis vesperi per tabernas palabatur et conpita quaeritando Graeco sermone, cuius erat inpendio gnarus",
-        likeNumber: "36",
-        responses: [],
-      },
-      {
-        id: "3",
-        profile: {
-          fullName: "Hilo Baylouni",
-          img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-        },
-        content:
-          "Novo denique perniciosoque exemplo idem Galluallienus, et adhibitis",
-        likeNumber: "36",
-        responses: [
-          {
-            profile: {
-              fullName: "Mouhcine Daali",
-              img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-            },
-            content:
-              "se aliquando dicitur Gallienusraeco sermone, cuius erat inpendio gnarus",
-            likeNumber: "36",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "2",
-    profile: {
-      fullName: "test test",
-      userName: "@jontyson",
-      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    content:
-      "stremo agnitus saepe iamque, si prodisset, conspicuum se fore contemplans, non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
-    likeNumber: "278",
-    comments: [
-      {
-        id: "1",
-        profile: {
-          fullName: "Hilo Baylouni",
-          img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-        },
-        content:
-          "Novo denique perniciosoque exemplo, et adhibitis paucis clam fersermone, cuius erat inpendio gnarus",
-        likeNumber: "36",
-        responses: [
-          {
-            id: "1",
-            profile: {
-              fullName: "Mouhcine Daali",
-              img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-            },
-            content:
-              "se aliquando dicitur Gallienusraeco sermone, cuius erat inpendio gnarus",
-            likeNumber: "36",
-          },
-          {
-            id: "2",
-            profile: {
-              fullName: "Hilo Baylouni",
-              img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-            },
-            content:
-              "Novo denique perniciosoqueur Gallienus, et adhibitis paucis claarus",
-            likeNumber: "36",
-          },
-        ],
-      },
-      {
-        id: "2",
-        profile: {
-          fullName: "Hilo Baylouni",
-          img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-        },
-        content:
-          "Et adhibitis paucis clam ferro succinctis vesperi per tabernas palabatur et conpita quaeritando Graeco sermone, cuius erat inpendio gnarus",
-        likeNumber: "36",
-        responses: [],
-      },
-      {
-        id: "3",
-        profile: {
-          fullName: "Hilo Baylouni",
-          img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-        },
-        content:
-          "Novo denique perniciosoque exemplo idem Galluallienus, et adhibitis",
-        likeNumber: "36",
-        responses: [
-          {
-            id: "1",
-            profile: {
-              fullName: "Mouhcine Daali",
-              img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-            },
-            content:
-              "se aliquando dicitur Gallienusraeco sermone, cuius erat inpendio gnarus",
-            likeNumber: "36",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "3",
-    profile: {
-      fullName: "Mouhcine Daali",
-      userName: "@jontyson",
-      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    content:
-      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
-    likeNumber: "278",
-    comments: [],
-  },
-  {
-    id: "4",
-    profile: {
-      fullName: "Mouhcine Daali",
-      userName: "@jontyson",
-      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    content:
-      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
-    likeNumber: "278",
-    comments: [],
-  },
-  {
-    id: "5",
-    profile: {
-      fullName: "Mouhcine Daali",
-      userName: "@jontyson",
-      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    content:
-      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
-    likeNumber: "278",
-    comments: [],
-  },
-  {
-    id: "6",
-    profile: {
-      fullName: "Mouhcine Daali",
-      userName: "@jontyson",
-      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    content:
-      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
-    likeNumber: "278",
-    comments: [],
-  },
-  {
-    id: "7",
-    profile: {
-      fullName: "Mouhcine Daali",
-      userName: "@jontyson",
-      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    content:
-      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
-    likeNumber: "278",
-    comments: [],
-  },
-  {
-    id: "8",
-    profile: {
-      fullName: "Mouhcine Daali",
-      userName: "@jontyson",
-      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    content:
-      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
-    likeNumber: "278",
-    comments: [],
-  },
-  {
-    id: "9",
-    profile: {
-      fullName: "Mouhcine Daali",
-      userName: "@jontyson",
-      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    content:
-      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
-    likeNumber: "278",
-    comments: [],
-  },
-]);
-
-const currentPost = ref("");
+const currentItem = ref("");
 
 onMounted(() => {
-  const posts = document.querySelectorAll(".post");
+  const items = document.querySelectorAll(".item");
 
   const screenHeight = window.innerHeight;
-  let postHeight = posts[0].offsetHeight;
-  let rootMargin = (screenHeight - postHeight) / 2;
+  let itemHeight = items[0].offsetHeight;
+  let rootMargin = Math.floor((screenHeight - itemHeight) / 2);
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) currentPost.value = entry.target.id;
-        else currentPost.value = "";
+        if (entry.isIntersecting) currentItem.value = entry.target.id;
       });
     },
     {
       // root: null,
       rootMargin: `-${rootMargin}px 0px -${rootMargin}px 0px`,
-      threshold: 0.6,
+      threshold: 0.3,
     }
   );
-  posts.forEach((post) => {
-    observer.observe(post);
+  items.forEach((item) => {
+    observer.observe(item);
   });
 });
 </script>
