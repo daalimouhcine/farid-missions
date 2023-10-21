@@ -6,7 +6,7 @@
     <div
       class="max-sm:w-10/12 max-md:w-9/12 w-6/12 bg-gray-100 max-md:mr-0 max-md:-translate-x-2 mx-auto -translate-x-[5vw] border-x-[4px] px-5 border-gray-300"
     >
-      <div class="w-full h-[200vh] my-5 space-y-10">
+      <div class="post-container w-full min-h-screen my-5 space-y-10">
         <Card />
         <!-- the scrollable content goes here -->
         <div
@@ -16,13 +16,28 @@
           class="relative w-full space-y-5 px-3 md:px-10 pt-3 md:pt-5 pb-5 md:pb-10 shadow-md cursor-pointer"
         >
           <div
-            class="w-1.5 rounded-full h-full bg-red-500 absolute top-0 left-0 -translate-x-6"
+            class="w-1 rounded-full h-full bg-red-500 absolute top-0 left-0 -translate-x-6"
+            :class="{
+              'bg-[#711112]': currentPost === post.id,
+              'bg-[#CCADAF]': currentPost !== post.id,
+            }"
           >
-            <div class="w-fit h-fit absolute -top-2 -left-full">
+            <div
+              v-if="currentPost === post.id"
+              class="w-fit h-fit absolute -top-4 -translate-x-1/2 ml-0.5"
+            >
               <OpenBookIcon />
             </div>
+            <div
+              v-else
+              class="w-fit h-fit absolute -top-7 -translate-x-1/2 ml-[2px]"
+            >
+              <CloseBookIcon />
+            </div>
           </div>
-          <PostComponent :post="post" />
+          <div class="post" :id="post.id">
+            <PostComponent :post="post" />
+          </div>
         </div>
       </div>
     </div>
@@ -33,10 +48,11 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import PostComponent from "../components/post/PostComponent.vue";
 import Card from "../components/scrollTask/Card.vue";
 import OpenBookIcon from "../icons/OpenBookIcon.vue";
+import CloseBookIcon from "../icons/CloseBookIcon.vue";
 
 const posts = ref([
   {
@@ -216,5 +232,104 @@ const posts = ref([
     likeNumber: "278",
     comments: [],
   },
+  {
+    id: "4",
+    profile: {
+      fullName: "Mouhcine Daali",
+      userName: "@jontyson",
+      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
+    },
+    content:
+      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
+    likeNumber: "278",
+    comments: [],
+  },
+  {
+    id: "5",
+    profile: {
+      fullName: "Mouhcine Daali",
+      userName: "@jontyson",
+      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
+    },
+    content:
+      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
+    likeNumber: "278",
+    comments: [],
+  },
+  {
+    id: "6",
+    profile: {
+      fullName: "Mouhcine Daali",
+      userName: "@jontyson",
+      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
+    },
+    content:
+      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
+    likeNumber: "278",
+    comments: [],
+  },
+  {
+    id: "7",
+    profile: {
+      fullName: "Mouhcine Daali",
+      userName: "@jontyson",
+      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
+    },
+    content:
+      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
+    likeNumber: "278",
+    comments: [],
+  },
+  {
+    id: "8",
+    profile: {
+      fullName: "Mouhcine Daali",
+      userName: "@jontyson",
+      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
+    },
+    content:
+      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
+    likeNumber: "278",
+    comments: [],
+  },
+  {
+    id: "9",
+    profile: {
+      fullName: "Mouhcine Daali",
+      userName: "@jontyson",
+      img: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
+    },
+    content:
+      "Novo denique perniciosclam ferro succinctis vesperi per tabernas palabatur et conp non nisi luce palam egrediens ad agenda quae putabat seria cernebatur. et haec quidem medullitus multis gementibus agebantur.",
+    likeNumber: "278",
+    comments: [],
+  },
 ]);
+
+const currentPost = ref("");
+
+onMounted(() => {
+  const posts = document.querySelectorAll(".post");
+
+  const screenHeight = window.innerHeight;
+  let postHeight = posts[0].offsetHeight;
+  let rootMargin = (screenHeight - postHeight) / 2;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) currentPost.value = entry.target.id;
+        else currentPost.value = "";
+      });
+    },
+    {
+      // root: null,
+      rootMargin: `-${rootMargin}px 0px -${rootMargin}px 0px`,
+      threshold: 0.6,
+    }
+  );
+  posts.forEach((post) => {
+    observer.observe(post);
+  });
+});
 </script>
