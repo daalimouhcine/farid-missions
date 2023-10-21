@@ -16,7 +16,7 @@
           class="relative w-full space-y-5 px-3 md:px-10 pt-3 md:pt-5 pb-5 md:pb-10 shadow-md cursor-pointer"
         >
           <div
-            class="w-1 rounded-full h-full bg-red-500 absolute top-0 left-0 -translate-x-6"
+            class="w-1 rounded-full h-full absolute top-0 left-0 -translate-x-6"
             :class="{
               'bg-[#711112]': currentPost === post.id,
               'bg-[#CCADAF]': currentPost !== post.id,
