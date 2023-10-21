@@ -15,7 +15,7 @@
         src="https://images.unsplash.com/photo-1633332755192-727a05c4013d"
         :class="{
           'w-16 h-16 my-5': isScrolled,
-          'max-sm:w-20 max-md:w-28 w-36': !isScrolled,
+          'max-sm:w-20 max-md:w-28 max-lg:w-32 w-36': !isScrolled,
           'max-w-max rounded-md transition-all duration-300 ease-linear': true,
         }"
       />
