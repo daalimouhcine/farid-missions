@@ -1,12 +1,13 @@
 <template>
   <div class="flex gap-x-5">
-    <div class="fixed left-0 w-1/12 max-sm:hidden h-screen bg-blue-200 py-5">
+    <div class="fixed left-0 w-1/12 max-sm:hidden h-screen bg-blue-200 py-5 z-30">
       <div class="w-fit flex flex-col gap-y-5 items-center mx-auto">
         <AddBookModal
           :is-open="isOpenAddBookModal"
           @close-modal="closeModal('addBookModal')"
         />
         <button
+          @click="openModal('addBookModal')"
           class="w-full bg-gray-100 hover:bg-gray-300 rounded-md border-2 border-gray-800 px-3 py-1"
         >
           Add
@@ -16,6 +17,7 @@
           @close-modal="closeModal('createPostModal')"
         />
         <button
+          @click="openModal('createPostModal')"
           class="w-full bg-gray-100 hover:bg-gray-300 rounded-md border-2 border-gray-800 px-3 py-1"
         >
           Launch
@@ -25,14 +27,15 @@
           @close-modal="closeModal('launchClubModal')"
         />
         <button
+          @click="openModal('launchClubModal')"
           class="w-full bg-gray-100 hover:bg-gray-300 rounded-md border-2 border-gray-800 px-3 py-1"
         >
-          create
+          Create
         </button>
       </div>
     </div>
     <div
-      class="max-sm:w-10/12 max-md:w-9/12 w-6/12 bg-gray-100 max-md:mr-0 max-md:-translate-x-2 mx-auto -translate-x-[5vw] border-x-[4px] px-5 border-gray-300"
+      class="max-sm:w-10/12 max-md:w-9/12 z-20 w-6/12 bg-gray-100 max-md:mr-0 max-md:-translate-x-2 mx-auto -translate-x-[5vw] border-x-[4px] px-5 border-gray-300"
     >
       <div class="item-container w-full min-h-screen my-5 space-y-10">
         <Card />
@@ -137,6 +140,34 @@ const items = [
     elements: Array(6).fill(0),
   },
 ];
+
+const openModal = (modalName) => {
+  switch (modalName) {
+    case "addBookModal":
+      isOpenAddBookModal.value = true;
+      break;
+    case "createPostModal":
+      isOpenCreatePostModal.value = true;
+      break;
+    case "launchClubModal":
+      isOpenLaunchClubModal.value = true;
+      break;
+  }
+};
+
+const closeModal = (modalName) => {
+  switch (modalName) {
+    case "addBookModal":
+      isOpenAddBookModal.value = false;
+      break;
+    case "createPostModal":
+      isOpenCreatePostModal.value = false;
+      break;
+    case "launchClubModal":
+      isOpenLaunchClubModal.value = false;
+      break;
+  }
+};
 
 onMounted(() => {
   const items = document.querySelectorAll(".item");
