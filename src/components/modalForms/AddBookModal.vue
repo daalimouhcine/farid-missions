@@ -6,7 +6,7 @@
     ]"
   >
     <div
-      class="relative cursor-auto font-serif w-[98vw] sm:w-4/5 lg:w-3/5 max-h-[98vh] h-[90vh] px-3 md:px-10 py-5 m-auto bg-white rounded-lg shadow-lg flex flex-col items-center"
+      class="relative cursor-auto font-serif w-[98vw] sm:w-4/5 lg:w-3/5 max-h-[90vh] px-3 md:px-10 py-5 m-auto bg-white rounded-lg shadow-lg flex flex-col items-center"
     >
       <div class="flex w-full items-center">
         <h3 class="text-2xl min-w-max self-end">Add a Book</h3>
@@ -55,7 +55,7 @@
             <UserIcon class="self-start" />
             <div class="w-full flex flex-col gap-y-5">
               <div
-                class="flex flex-col w-full relative"
+                class="flex flex-col gap-x-1 w-full relative"
                 v-for="(_, idx) in inputRef.people"
                 :key="idx"
               >
@@ -67,16 +67,15 @@
                   v-model="inputRef.people[idx].name"
                 />
                 <select
-                  class="absolute h-full w-fit underline text-zinc-600 px-3 text-center right-0 border-2 border-zinc-300 rounded-md focus:outline-none"
+                  class="absolute h-full w-fit underline text-zinc-600 px-3 max-md:px-2 max-sm:px-1 text-center right-0 border-2 border-zinc-300 rounded-md focus:outline-none"
                   v-model="inputRef.people[idx].role"
                 >
                   <option value="author">Author</option>
                   <option value="editor">Editor</option>
                   <option value="translator">Translator</option>
                 </select>
-
                 <button
-                v-if="idx != 0"
+                  v-if="idx != 0"
                   type="button"
                   class="absolute top-0 -right-10 h-full w-fit flex items-center justify-center text-zinc-600 hover:text-zinc-500 focus:outline-none"
                   @click="deletePerson(idx)"
@@ -192,7 +191,7 @@
       </form>
       <button
         type="button"
-        class="self-end h-fit flex gap-x-1 font-serif items-center max-sm:text-xs text-sm bg-[#9C5759] hover:bg-[#714042] transition-colors text-gray-100 font-semibold py-2 px-5 mt-2 mx-10 sm:px-7 rounded-lg"
+        class="self-end h-fit flex gap-x-1 font-serif items-center max-sm:text-xs text-sm bg-[#9C5759] hover:bg-[#714042] transition-colors text-gray-100 font-semibold py-2 px-5 sm:mt-3 mx-10 sm:px-7 rounded-lg"
       >
         Create
       </button>
