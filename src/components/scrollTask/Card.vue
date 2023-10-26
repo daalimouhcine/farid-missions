@@ -36,7 +36,7 @@
         </div>
         <button
           type="submit"
-          class="h-fit flex gap-x-1 font-serif items-center max-sm:text-xs text-sm bg-amber-800 hover:bg-amber-700 transition-colors text-gray-100 font-semibold py-1.5 px-5 sm:px-7 rounded-lg"
+          class="h-fit flex gap-x-1 font-serif items-center max-sm:text-xs text-sm bg-[#9C5759] hover:bg-[#714042] transition-colors text-gray-100 font-semibold py-1.5 px-5 sm:px-7 rounded-lg"
         >
           Follow
         </button>
@@ -50,10 +50,26 @@
         </p>
       </div>
       <div v-if="!isScrolled" class="w-full flex h-14">
-        <button class="flex-1 border-r appearance-none hover:bg-gray-200 transition-colors duration-200 ease-linear">1.5K ********</button>
-        <button class="flex-1 border-r appearance-none hover:bg-gray-200 transition-colors duration-200 ease-linear">150 ********</button>
-        <button class="flex-1 border-r appearance-none hover:bg-gray-200 transition-colors duration-200 ease-linear">1K ********</button>
-        <button class="flex-1 appearance-none hover:bg-gray-200 transition-colors duration-200 ease-linear">15 ********</button>
+        <button
+          class="flex-1 border-r appearance-none hover:bg-gray-200 transition-colors duration-200 ease-linear"
+        >
+          1.5K ********
+        </button>
+        <button
+          class="flex-1 border-r appearance-none hover:bg-gray-200 transition-colors duration-200 ease-linear"
+        >
+          150 ********
+        </button>
+        <button
+          class="flex-1 border-r appearance-none hover:bg-gray-200 transition-colors duration-200 ease-linear"
+        >
+          1K ********
+        </button>
+        <button
+          class="flex-1 appearance-none hover:bg-gray-200 transition-colors duration-200 ease-linear"
+        >
+          15 ********
+        </button>
       </div>
     </div>
   </div>
