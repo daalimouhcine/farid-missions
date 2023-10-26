@@ -1,6 +1,6 @@
 <template>
   <div class="flex gap-x-5">
-    <div class="fixed left-0 w-1/12 max-sm:hidden h-screen bg-blue-200 py-5 z-30">
+    <div class="fixed left-0 w-1/12 h-screen bg-blue-200 py-5 z-30">
       <div class="w-fit flex flex-col gap-y-5 items-center mx-auto">
         <AddBookModal
           :is-open="isOpenAddBookModal"
