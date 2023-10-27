@@ -37,7 +37,10 @@
             v-on:change="uploadCoverImage"
           />
         </label>
-        <div class="w-fit h-fit flex flex-col items-center gap-y-1 mx-auto my-7" v-else>
+        <div
+          class="w-fit h-fit flex flex-col items-center gap-y-1 mx-auto my-7"
+          v-else
+        >
           <div
             class="w-28 h-40 p-0.5 flex flex-col items-center justify-center text-center gap-y-1 border border-zinc-400 cursor-pointer hover:border-zinc-500 hover:bg-gray-50 transition-colors"
           >
@@ -241,6 +244,7 @@ import BookIcon from "../../icons/BookIcon.vue";
 import UserIcon from "../../icons/UserIcon.vue";
 import BarCodeIcon from "../../icons/BarCodeIcon.vue";
 import GalleryAddIcon from "../../icons/GalleryAddIcon.vue";
+
 const props = defineProps(["isOpen"]);
 const emits = defineEmits(["closeModal"]);
 

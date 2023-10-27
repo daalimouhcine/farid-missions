@@ -12,22 +12,23 @@
         >
           Add
         </button>
-        <CreatePostModal
-          :is-open="isOpenCreatePostModal"
-          @close-modal="closeModal('createPostModal')"
-        />
-        <button
-          @click="openModal('createPostModal')"
-          class="w-full bg-gray-100 hover:bg-gray-300 rounded-md border-2 border-gray-800 px-3 py-1"
-        >
-          Launch
-        </button>
         <LaunchClubModal
           :is-open="isOpenLaunchClubModal"
           @close-modal="closeModal('launchClubModal')"
         />
         <button
           @click="openModal('launchClubModal')"
+          class="w-full bg-gray-100 hover:bg-gray-300 rounded-md border-2 border-gray-800 px-3 py-1"
+        >
+          Launch
+        </button>
+
+        <CreatePostModal
+          :is-open="isOpenCreatePostModal"
+          @close-modal="closeModal('createPostModal')"
+        />
+        <button
+          @click="openModal('createPostModal')"
           class="w-full bg-gray-100 hover:bg-gray-300 rounded-md border-2 border-gray-800 px-3 py-1"
         >
           Create
