@@ -2,11 +2,11 @@
   <div
     :class="[
       [!isOpen ? 'hidden' : 'flex'],
-      'w-screen h-screen bg-gray-800/25 fixed left-0 top-0 cursor-pointer',
+      'w-screen h-screen bg-gray-800/25 fixed left-0 top-0',
     ]"
   >
     <div
-      class="relative cursor-auto font-serif w-[98vw] sm:w-4/5 lg:w-3/5 max-h-[90vh] px-3 md:px-10 py-5 m-auto bg-white rounded-lg shadow-lg flex flex-col items-center"
+      class="relative font-serif w-[98vw] sm:w-4/5 lg:w-3/5 max-h-[90vh] px-3 md:px-10 py-5 m-auto bg-white rounded-lg shadow-lg flex flex-col items-center"
     >
       <div class="flex w-full items-center">
         <h3 class="text-2xl min-w-max self-end">Add a Book</h3>
@@ -19,19 +19,52 @@
         </div>
       </div>
       <form class="w-full space-y-5 overflow-y-scroll pb-20">
-        <div
-          class="w-28 h-40 p-2 my-7 flex flex-col mx-auto items-center justify-center text-center gap-y-1 border border-zinc-400"
+        <label
+          for="coverImage"
+          class="w-28 h-40 p-2 my-7 flex flex-col mx-auto items-center justify-center text-center gap-y-1 border border-zinc-400 cursor-pointer hover:border-zinc-500 hover:bg-gray-50 transition-colors"
+          v-if="!inputRef.coverImage"
         >
-          <svg-icon
-            type="mdi"
-            :path="mdiClose"
-            class="w-10 text-zinc-500"
-          ></svg-icon>
+          <GalleryAddIcon />
           <p class="text-xs text-zinc-500">
             Upload <br />
             the cover image
           </p>
+          <input
+            type="file"
+            name="coverImage"
+            id="coverImage"
+            class="hidden"
+            v-on:change="uploadCoverImage"
+          />
+        </label>
+        <div class="w-fit h-fit flex flex-col items-center gap-y-1 mx-auto my-7" v-else>
+          <div
+            class="w-28 h-40 p-0.5 flex flex-col items-center justify-center text-center gap-y-1 border border-zinc-400 cursor-pointer hover:border-zinc-500 hover:bg-gray-50 transition-colors"
+          >
+            <img
+              :src="previewImage"
+              alt="cover image"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="flex items-center gap-x-1">
+            <p class="text-xs text-zinc-500">
+              {{ inputRef.coverImage.name }}
+            </p>
+            <button
+              type="button"
+              class="h-full w-fit flex items-center justify-center text-zinc-600 hover:text-zinc-500 focus:outline-none"
+              @click="inputRef.coverImage = null"
+            >
+              <svg-icon
+                type="mdi"
+                :path="mdiClose"
+                class="w-7 text-red-400 hover:text-red-600"
+              ></svg-icon>
+            </button>
+          </div>
         </div>
+
         <div class="space-y-7 pr-5">
           <div class="w-full flex items-center gap-x-4">
             <BookIcon />
@@ -207,6 +240,7 @@ import { mdiClose } from "@mdi/js";
 import BookIcon from "../../icons/BookIcon.vue";
 import UserIcon from "../../icons/UserIcon.vue";
 import BarCodeIcon from "../../icons/BarCodeIcon.vue";
+import GalleryAddIcon from "../../icons/GalleryAddIcon.vue";
 const props = defineProps(["isOpen"]);
 const emits = defineEmits(["closeModal"]);
 
@@ -254,8 +288,10 @@ const languageOptions = ref([
   "Serbian",
 ]);
 
+const previewImage = ref(null);
 // single ref for all inputs
 const inputRef = ref({
+  coverImage: null,
   bookTitle: "",
   people: [
     {
@@ -269,6 +305,11 @@ const inputRef = ref({
   pagesNumber: "",
   editionLanguage: [],
 });
+
+const uploadCoverImage = (e) => {
+  inputRef.value.coverImage = e.target.files[0];
+  previewImage.value = URL.createObjectURL(e.target.files[0]);
+};
 
 const addPerson = () => {
   inputRef.value.people.push({
