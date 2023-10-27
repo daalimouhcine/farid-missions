@@ -6,7 +6,7 @@
     ]"
   >
     <div
-      class="relative font-serif w-[98vw] sm:w-4/5 lg:w-3/5 max-h-[90vh] min-h-[60vh] transition-all duration-300 md:px-10 py-5 m-auto bg-white rounded-lg shadow-lg flex flex-col items-center"
+      class="relative font-serif w-[98vw] sm:w-4/5 lg:w-3/5 max-h-[90vh] min-h-[60vh] transition-all duration-300 px-8 md:px-10 py-5 m-auto bg-white rounded-lg shadow-lg flex flex-col items-center"
     >
       <div class="flex w-full items-center">
         <h3 class="text-2xl min-w-max self-end">Create a Post</h3>
@@ -59,7 +59,7 @@
             v-for="book in searchResults"
             :key="book.id"
             class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 mt-5 cursor-pointer"
-            @click="selectedBook.value = book"
+            @click="selectedBook = book"
           >
             <div class="w-full h-full flex flex-col items-center">
               <img
@@ -72,8 +72,99 @@
           </div>
         </div>
       </div>
-      <div v-else>
-        
+      <div class="w-full h-fit flex flex-col gap-y-5 mt-5" v-else>
+        <div class="w-full h-fit flex justify-between gap-x-3 border-y-2 py-3">
+          <div class="flex gap-x-1 relative">
+            <button
+              class="absolute top-1/2 -translate-y-1/2 -left-9 md:-left-10"
+              @click="removeSelectedBook"
+            >
+              <svg-icon
+                type="mdi"
+                :path="mdiClose"
+                class="w-10 text-gray-400 hover:text-gray-600"
+              ></svg-icon>
+            </button>
+            <div class="flex h-full gap-x-5">
+              <img
+                :src="selectedBook.coverImage"
+                alt="book cover"
+                class="w-20 h-fit object-cover rounded-md"
+              />
+              <div class="w-full flex flex-col justify-evenly">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  {{ selectedBook.title }}
+                </h3>
+                <p class="text-zinc-600">
+                  {{ selectedBook.persons.join(", ") }}
+                </p>
+                <div class="w-fit flex gap-x-5 text-zinc-600">
+                  <p>
+                    Publisher:
+                    {{ selectedBook.publisher }}
+                  </p>
+                  <p>
+                    Year:
+                    {{ selectedBook.publishedDate }}
+                  </p>
+                  <p>
+                    ISBN:
+                    {{ selectedBook.isbn }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="h-fit flex flex-col gap-y-2 items-center self-center">
+            <div class="flex">
+              <button
+                class="px-2 border border-[#ab787a] rounded-l-lg text-gray-800 text-lg hover:bg-gray-100"
+                @click="pageNumber--"
+              >
+                -
+              </button>
+              <input
+                v-model="pageNumber"
+                type="number"
+                class="w-10 text-center border border-[#ab787a] focus:outline-[#ab787a]"
+              />
+              <button
+                class="px-2 border border-[#ab787a] rounded-r-lg text-gray-800 text-lg hover:bg-gray-100"
+                @click="pageNumber++"
+              >
+                +
+              </button>
+            </div>
+            <OpenBookIcon class="w-16 h-fit" />
+          </div>
+        </div>
+        <div class="flex gap-x-5">
+          <img
+            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d"
+            alt="profile image"
+            class="w-14 h-14 rounded-lg"
+          />
+          <textarea
+            class="w-full h-32 text-zinc-600 placeholder-zinc-500 text-sm focus:outline-none mt-4"
+            placeholder="|Une nouvelle réfléxion ?"
+            v-model="postText"
+          ></textarea>
+        </div>
+        <div class="flex justify-between items-center">
+          <div class="flex gap-x-2 items-center">
+            <input type="checkbox" class="w-4 h-4" />
+            <p class="text-zinc-600 text-sm">
+              Je confirme ayant bien vérifié qu’il s’agit de la bonne édition
+              (ISBN : 125-52-325-564)
+            </p>
+          </div>
+          <button
+            type="button"
+            class="self-end h-fit flex gap-x-1 font-serif items-center max-sm:text-xs text-sm bg-[#9C5759] hover:bg-[#714042] transition-colors text-gray-100 font-semibold py-2 px-5 sm:px-7 rounded-lg"
+          >
+            Create
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -83,17 +174,21 @@
 import { ref } from "vue";
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiClose, mdiMagnify } from "@mdi/js";
+import OpenBookIcon from "../../icons/OpenBookIcon.vue";
 const props = defineProps(["isOpen"]);
 const emits = defineEmits(["closeModal"]);
 
 const search = ref("");
 const searchResults = ref([]);
 const selectedBook = ref(null);
+const pageNumber = ref(253);
+const postText = ref("");
 
 const books = [
   {
     id: 1,
     title: "The Lord of the Rings",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://m.media-amazon.com/images/I/91DGwmaFdxL._AC_UY327_FMwebp_QL65_.jpg",
     publishedDate: "1954-07-29",
@@ -103,6 +198,7 @@ const books = [
   {
     id: 2,
     title: "The Hobbit",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage: "https://m.media-amazon.com/images/I/815k7sxg6zL._SY466_.jpg",
     publishedDate: "1937-09-21",
     publisher: "George Allen & Unwin",
@@ -111,6 +207,7 @@ const books = [
   {
     id: 3,
     title: "The Fellowship of the Ring",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage: "https://m.media-amazon.com/images/I/91ydFIymD4L._SY342_.jpg",
     publishedDate: "1954-07-29",
     publisher: "George Allen & Unwin",
@@ -119,6 +216,7 @@ const books = [
   {
     id: 4,
     title: "The Two Towers",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://m.media-amazon.com/images/I/81hjPZ5axOL._AC_UY327_FMwebp_QL65_.jpg",
     publishedDate: "1954-11-11",
@@ -128,6 +226,7 @@ const books = [
   {
     id: 5,
     title: "The Return of the King",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://m.media-amazon.com/images/I/714ifTQtqwL._AC_UY327_FMwebp_QL65_.jpg",
     publishedDate: "1955-10-20",
@@ -137,6 +236,7 @@ const books = [
   {
     id: 6,
     title: "The Silmarillion",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://m.media-amazon.com/images/I/91d9vnqoupL._AC_UY327_FMwebp_QL65_.jpg",
     publishedDate: "1977-09-15",
@@ -146,6 +246,7 @@ const books = [
   {
     id: 7,
     title: "Unfinished Tales of Númenor and Middle-earth",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://m.media-amazon.com/images/I/810Vqx3DKqL._AC_UY327_FMwebp_QL65_.jpg",
     publishedDate: "1980-10-01",
@@ -155,6 +256,7 @@ const books = [
   {
     id: 8,
     title: "The Children of Húrin",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://m.media-amazon.com/images/I/91vB6Qe2rfL._AC_UY327_FMwebp_QL65_.jpg",
     publishedDate: "2007-04-17",
@@ -164,6 +266,7 @@ const books = [
   {
     id: 9,
     title: "Beren and Lúthien",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://m.media-amazon.com/images/I/81NcTZMOLML._AC_UY327_FMwebp_QL65_.jpg",
     publishedDate: "2017-06-01",
@@ -173,6 +276,7 @@ const books = [
   {
     id: 10,
     title: "The Fall of Gondolin",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://m.media-amazon.com/images/I/91+KAYxBMNL._AC_UY327_FMwebp_QL65_.jpg",
     publishedDate: "2018-08-30",
@@ -182,6 +286,7 @@ const books = [
   {
     id: 11,
     title: "The Hobbit, or There and Back Again",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://m.media-amazon.com/images/I/91ZbGMgpxOL._AC_UY327_FMwebp_QL65_.jpg",
     publishedDate: "1937-09-21",
@@ -191,6 +296,7 @@ const books = [
   {
     id: 12,
     title: "The Fellowship of the Ring",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://m.media-amazon.com/images/I/91ydFIymD4L._AC_UY327_FMwebp_QL65_.jpg",
     publishedDate: "1954-07-29",
@@ -200,6 +306,7 @@ const books = [
   {
     id: 13,
     title: "The Two Towers",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://m.media-amazon.com/images/I/81hjPZ5axOL._AC_UY327_FMwebp_QL65_.jpg",
     publishedDate: "1954-11-11",
@@ -209,6 +316,7 @@ const books = [
   {
     id: 14,
     title: "The Return of the King",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://m.media-amazon.com/images/I/714ifTQtqwL._AC_UY327_FMwebp_QL65_.jpg",
     publishedDate: "1955-10-20",
@@ -218,6 +326,7 @@ const books = [
   {
     id: 15,
     title: "Harry Potter and the Philosopher's Stone",
+    persons: ["Nir Eyal", "Ryan Hoover"],
     coverImage:
       "https://images-na.ssl-images-amazon.com/images/I/51UoqRAxwEL._SX331_BO1,204,203,200_.jpg",
     publishedDate: "1997-06-26",
@@ -226,6 +335,11 @@ const books = [
   },
 ];
 
+const removeSelectedBook = () => {
+  selectedBook.value = null;
+  pageNumber.value = 253;
+  postText.value = "";
+};
 const searchBooks = () => {
   console.log(search.value);
   if (search.value === "") {
