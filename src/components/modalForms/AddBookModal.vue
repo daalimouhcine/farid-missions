@@ -328,6 +328,22 @@ const deletePerson = (idx) => {
 };
 
 const closeModal = () => {
+  inputRef.value = {
+    coverImage: null,
+    bookTitle: "",
+    people: [
+      {
+        name: "",
+        role: "author",
+      },
+    ],
+    publisher: "",
+    publisherYear: "",
+    isbn: "",
+    pagesNumber: "",
+    editionLanguage: [],
+  };
+  previewImage.value = null;
   emits("closeModal");
 };
 </script>
