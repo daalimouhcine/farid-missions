@@ -154,7 +154,9 @@
             <BookIcon />
             <div class="relative w-full">
               <input
-                type="date"
+                type="text"
+                @focus="(e) => (e.target.type = 'date')"
+                @blur="(e) => (e.target.type = 'text')"
                 class="peer h-10 w-full px-2 border-2 rounded-md border-zinc-300 text-zinc-600 placeholder-transparent text-sm focus:outline-none focus:border-green-500"
                 placeholder=" "
                 id="publisherYear"
