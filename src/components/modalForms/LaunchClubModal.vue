@@ -92,13 +92,15 @@
                 class="w-20 h-fit object-cover rounded-md"
               />
               <div class="w-full flex flex-col justify-evenly">
-                <h3 class="text-xl font-semibold text-gray-800">
+                <h3 class="max-sm:text-lg text-xl font-semibold text-gray-800">
                   {{ selectedBook.title }}
                 </h3>
-                <p class="text-zinc-600">
+                <p class="text-zinc-600 max-sm:text-sm">
                   {{ selectedBook.persons.join(", ") }}
                 </p>
-                <div class="w-fit flex gap-x-5 text-zinc-600">
+                <div
+                  class="w-fit flex gap-x-5 gap-y-1 flex-wrap max-sm:text-xs max-md:text-sm text-zinc-600"
+                >
                   <p>
                     Publisher:
                     {{ selectedBook.publisher }}
@@ -126,7 +128,9 @@
               id="description"
               maxlength="230"
             ></textarea>
-            <p class="text-sm self-end mt-2 text-zinc-500">{{clubDetails.description.length}}/230</p>
+            <p class="text-sm self-end mt-2 text-zinc-500">
+              {{ clubDetails.description.length }}/230
+            </p>
           </div>
           <div class="flex flex-col gap-x-5">
             <label for="lancementDate" class="px-2">Date de Lancement</label>
