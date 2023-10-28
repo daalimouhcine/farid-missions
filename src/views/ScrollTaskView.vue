@@ -143,6 +143,7 @@ const items = [
 ];
 
 const openModal = (modalName) => {
+  document.body.classList.add("overflow-hidden");
   switch (modalName) {
     case "addBookModal":
       isOpenAddBookModal.value = true;
@@ -157,6 +158,7 @@ const openModal = (modalName) => {
 };
 
 const closeModal = (modalName) => {
+  document.body.classList.remove("overflow-hidden");
   switch (modalName) {
     case "addBookModal":
       isOpenAddBookModal.value = false;

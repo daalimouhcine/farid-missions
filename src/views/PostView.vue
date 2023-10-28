@@ -6,7 +6,7 @@
   <PostModal
     :modalStatus="modalStatus"
     :modalDetails="modalDetails"
-    @closeModal="modalStatus = false"
+    @closeModal="closeModal"
   />
 
   <div class="w-full flex flex-col gap-y-10 items-center">
@@ -219,7 +219,12 @@ const posts = ref([
 ]);
 
 const openModal = (idx) => {
+  document.body.classList.add("overflow-hidden");
   modalDetails.value = posts.value[idx];
   modalStatus.value = true;
+};
+const closeModal = () => {
+  document.body.classList.remove("overflow-hidden");
+  modalStatus.value = false;
 };
 </script>
