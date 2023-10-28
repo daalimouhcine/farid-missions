@@ -122,7 +122,7 @@
           <div class="flex flex-col gap-x-5">
             <label for="description" class="px-2">Description</label>
             <textarea
-              class="w-full h-32 text-zinc-600 placeholder-zinc-500 border border-[#DBC1C2] rounded-md text-sm focus:outline-none focus:border-[#9C5759] px-3 py-2"
+              class="w-full h-32 resize-none text-zinc-600 placeholder-zinc-500 border border-[#DBC1C2] rounded-md text-sm focus:outline-none focus:border-[#9C5759] px-3 py-2"
               placeholder="Décrivez l’objectif!"
               v-model="clubDetails.description"
               id="description"

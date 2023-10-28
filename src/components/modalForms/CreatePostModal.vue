@@ -149,7 +149,7 @@
             class="max-sm:w-10 max-sm:h-10 w-14 h-14 rounded-lg"
           />
           <textarea
-            class="w-full h-32 text-zinc-600 placeholder-zinc-500 text-sm focus:outline-none mt-4"
+            class="w-full h-32 resize-none text-zinc-600 placeholder-zinc-500 text-sm focus:outline-none mt-4"
             placeholder="|Une nouvelle réfléxion ?"
             v-model="postText"
           ></textarea>
