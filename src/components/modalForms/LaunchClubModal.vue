@@ -6,7 +6,7 @@
     ]"
   >
     <div
-      class="relative font-serif w-[98vw] sm:w-4/5 lg:w-3/5 max-h-[90vh] min-h-[60vh] transition-all duration-300 px-8 md:px-10 py-5 m-auto bg-white rounded-lg shadow-lg flex flex-col items-center"
+      class="relative font-serif w-[98vw] sm:w-4/5 lg:w-3/5 max-h-[90vh] transition-all duration-300 px-8 md:px-10 py-5 m-auto bg-white rounded-lg shadow-lg flex flex-col items-center"
     >
       <div class="flex w-full items-center">
         <h3 class="text-2xl min-w-max self-end">Launch a club</h3>
@@ -72,8 +72,8 @@
           </div>
         </div>
       </div>
-      <div class="w-full h-fit flex flex-col gap-y-5 mt-5" v-else>
-        <div class="w-full h-fit flex justify-between gap-x-3 border-y-2 py-3">
+      <div class="w-full h-fit flex flex-col max-sm:gap-y-3 gap-y-5 mt-5" v-else>
+        <div class="w-full h-fit flex justify-between gap-x-3 border-y-2 max-sm:py-2 py-3">
           <div class="flex gap-x-1 relative">
             <button
               class="absolute top-1/2 -translate-y-1/2 -left-9 md:-left-10"
@@ -85,21 +85,21 @@
                 class="w-10 text-gray-400 hover:text-gray-600"
               ></svg-icon>
             </button>
-            <div class="flex h-full gap-x-5">
+            <div class="flex items-center h-full gap-x-5">
               <img
                 :src="selectedBook.coverImage"
                 alt="book cover"
                 class="w-20 h-fit object-cover rounded-md"
               />
-              <div class="w-full flex flex-col justify-evenly">
-                <h3 class="max-sm:text-lg text-xl font-semibold text-gray-800">
+              <div class="w-full flex flex-col max-sm:gap-y-1 justify-evenly">
+                <h3 class="max-sm:text-lg text-xl !leading-4 font-semibold text-gray-800">
                   {{ selectedBook.title }}
                 </h3>
                 <p class="text-zinc-600 max-sm:text-sm">
                   {{ selectedBook.persons.join(", ") }}
                 </p>
                 <div
-                  class="w-fit flex gap-x-5 gap-y-1 flex-wrap max-sm:text-xs max-md:text-sm text-zinc-600"
+                  class="w-fit flex gap-x-5 gap-y-1 max-sm:-space-y-1 flex-wrap max-sm:text-xs max-md:text-sm text-zinc-600"
                 >
                   <p>
                     Publisher:
@@ -118,7 +118,7 @@
             </div>
           </div>
         </div>
-        <div class="space-y-3">
+        <div class="max-sm:space-y-0 space-y-3">
           <div class="flex flex-col gap-x-5">
             <label for="description" class="px-2">Description</label>
             <textarea
@@ -347,6 +347,8 @@ const emptySearch = () => {
   searchResults.value = [];
 };
 const closeModal = () => {
+  emptySearch();
+  removeSelectedBook();
   emits("closeModal");
 };
 </script>

@@ -91,15 +91,17 @@
                 alt="book cover"
                 class="w-20 h-fit object-cover rounded-md"
               />
-              <div class="w-full flex flex-col justify-evenly">
-                <h3 class="max-sm:text-lg text-xl font-semibold text-gray-800">
+              <div class="w-full flex flex-col max-sm:gap-y-1 justify-evenly">
+                <h3
+                  class="max-sm:text-lg text-xl !leading-4 font-semibold text-gray-800"
+                >
                   {{ selectedBook.title }}
                 </h3>
                 <p class="text-zinc-600 max-sm:text-sm">
                   {{ selectedBook.persons.join(", ") }}
                 </p>
                 <div
-                  class="w-fit flex gap-x-5 gap-y-1 flex-wrap max-sm:text-xs max-md:text-sm text-zinc-600"
+                  class="w-fit flex gap-x-5 gap-y-1 max-sm:-space-y-1 flex-wrap max-sm:text-xs max-md:text-sm text-zinc-600"
                 >
                   <p>
                     Publisher:
@@ -359,6 +361,8 @@ const emptySearch = () => {
   searchResults.value = [];
 };
 const closeModal = () => {
+  emptySearch();
+  removeSelectedBook();
   emits("closeModal");
 };
 </script>
