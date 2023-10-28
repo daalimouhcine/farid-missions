@@ -6,7 +6,7 @@
     ]"
   >
     <div
-      class="relative font-serif w-[98vw] sm:w-4/5 lg:w-3/5 max-h-[90vh] min-h-[60vh] transition-all duration-300 px-8 md:px-10 py-5 m-auto bg-white rounded-lg shadow-lg flex flex-col items-center"
+      class="relative font-serif w-[98vw] sm:w-4/5 lg:w-3/5 max-h-[90vh] transition-all duration-300 px-8 md:px-10 py-5 m-auto bg-white rounded-lg shadow-lg flex flex-col items-center"
     >
       <div class="flex w-full items-center">
         <h3 class="text-2xl min-w-max self-end">Create a Post</h3>
@@ -85,7 +85,7 @@
                 class="w-10 text-gray-400 hover:text-gray-600"
               ></svg-icon>
             </button>
-            <div class="flex h-full gap-x-5">
+            <div class="flex items-center h-full gap-x-5">
               <img
                 :src="selectedBook.coverImage"
                 alt="book cover"
@@ -120,7 +120,7 @@
           <div class="h-fit flex flex-col gap-y-2 items-center self-center">
             <div class="flex">
               <button
-                class="px-2 border border-[#ab787a] rounded-l-lg text-gray-800 text-lg hover:bg-gray-100"
+                class="max-sm:px-1 px-2 border border-[#ab787a] max-sm:rounded-l-md rounded-l-lg text-gray-800 max-sm:text-xs text-lg hover:bg-gray-100"
                 @click="pageNumber--"
               >
                 -
@@ -128,23 +128,23 @@
               <input
                 v-model="pageNumber"
                 type="number"
-                class="w-10 text-center border border-[#ab787a] focus:outline-[#ab787a]"
+                class="w-10 max-sm:text-xs text-center border border-[#ab787a] focus:outline-[#ab787a]"
               />
               <button
-                class="px-2 border border-[#ab787a] rounded-r-lg text-gray-800 text-lg hover:bg-gray-100"
+                class="max-sm:px-1 px-2 border border-[#ab787a] max-sm:rounded-r-md rounded-r-lg text-gray-800 max-sm:text-xs text-lg hover:bg-gray-100"
                 @click="pageNumber++"
               >
                 +
               </button>
             </div>
-            <OpenBookIcon class="w-16 h-fit" />
+            <OpenBookIcon class="max-sm:w-12 w-16 h-fit" />
           </div>
         </div>
         <div class="flex gap-x-5">
           <img
             src="https://images.unsplash.com/photo-1633332755192-727a05c4013d"
             alt="profile image"
-            class="w-14 h-14 rounded-lg"
+            class="max-sm:w-10 max-sm:h-10 w-14 h-14 rounded-lg"
           />
           <textarea
             class="w-full h-32 text-zinc-600 placeholder-zinc-500 text-sm focus:outline-none mt-4"
@@ -152,12 +152,12 @@
             v-model="postText"
           ></textarea>
         </div>
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between gap-x-1 items-center">
           <div class="flex gap-x-2 items-center">
             <input type="checkbox" class="w-4 h-4" />
-            <p class="text-zinc-600 text-sm">
+            <p class="text-zinc-600 max-sm:text-xs text-sm">
               Je confirme ayant bien vérifié qu’il s’agit de la bonne édition
-              (ISBN : 125-52-325-564)
+              (ISBN : {{ selectedBook.isbn }})
             </p>
           </div>
           <button
