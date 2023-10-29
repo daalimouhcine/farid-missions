@@ -1,5 +1,4 @@
 <template>
-  <!-- class="relative flex justify-center items-center max-sm:gap-x-0 gap-x-5 w-full border-y" -->
   <div
     class="sticky top-0 flex justify-center items-center max-sm:gap-x-0 gap-x-5 w-full border-y border-gray-300 bg-gray-100 z-20"
   >

@@ -36,7 +36,7 @@
       </div>
     </div>
     <div
-      class="max-sm:w-10/12 max-md:w-9/12 z-20 w-6/12 bg-gray-100 max-md:mr-0 max-md:-translate-x-2 mx-auto -translate-x-[5vw] border-x-[4px] px-5 border-gray-300"
+      class="max-sm:w-10/12 max-md:w-9/12 z-20 w-6/12 bg-gray-100 max-md:mr-0 max-md:-translate-x-2 mx-auto -translate-x-[10vw] border-x-[4px] px-5 border-gray-300"
     >
       <div class="item-container w-full min-h-screen my-5 space-y-10">
         <Card />
@@ -78,8 +78,8 @@
         </div>
       </div>
     </div>
-    <div class="fixed right-0 w-3/12 max-md:hidden h-screen bg-green-200">
-      <!-- Right content -->
+    <div class="flex flex-col gap-y-10 fixed right-0 w-4/12 px-3 max-md:hidden h-screen ">
+      <ActivityMap/>
     </div>
   </div>
 </template>
@@ -93,6 +93,7 @@ import CloseBookIcon from "../icons/CloseBookIcon.vue";
 import AddBookModal from "../components/modalForms/AddBookModal.vue";
 import CreatePostModal from "../components/modalForms/CreatePostModal.vue";
 import LaunchClubModal from "../components/modalForms/LaunchClubModal.vue";
+import ActivityMap from "../components/rightContent/ActivityMap.vue";
 
 const isOpenAddBookModal = ref(false);
 const isOpenCreatePostModal = ref(false);

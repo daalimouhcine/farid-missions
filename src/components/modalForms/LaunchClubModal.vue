@@ -72,8 +72,13 @@
           </div>
         </div>
       </div>
-      <div class="w-full h-fit flex flex-col max-sm:gap-y-3 gap-y-5 mt-5" v-else>
-        <div class="w-full h-fit flex justify-between gap-x-3 border-y-2 max-sm:py-2 py-3">
+      <div
+        class="w-full h-fit flex flex-col max-sm:gap-y-3 gap-y-5 mt-5"
+        v-else
+      >
+        <div
+          class="w-full h-fit flex justify-between gap-x-3 border-y-2 max-sm:py-2 py-3"
+        >
           <div class="flex gap-x-1 relative">
             <button
               class="absolute top-1/2 -translate-y-1/2 -left-9 md:-left-10"
@@ -92,7 +97,9 @@
                 class="w-20 h-fit object-cover rounded-md"
               />
               <div class="w-full flex flex-col max-sm:gap-y-1 justify-evenly">
-                <h3 class="max-sm:text-lg text-xl !leading-4 font-semibold text-gray-800">
+                <h3
+                  class="max-sm:text-lg text-xl !leading-4 font-semibold text-gray-800"
+                >
                   {{ selectedBook.title }}
                 </h3>
                 <p class="text-zinc-600 max-sm:text-sm">
@@ -133,15 +140,15 @@
             </p>
           </div>
           <div class="flex flex-col gap-x-5">
-            <label for="lancementDate" class="px-2">Date de Lancement</label>
+            <label for="dateFin" class="px-2">Date de Fin</label>
             <input
               type="text"
               @focus="(e) => (e.target.type = 'date')"
               @blur="(e) => (e.target.type = 'text')"
               placeholder="Choisissez une date"
               class="w-full h-10 text-zinc-600 placeholder-zinc-500 border border-[#DBC1C2] rounded-md text-sm focus:outline-none focus:border-[#9C5759] px-3 py-2"
-              v-model="clubDetails.lancementDate"
-              id="lancementDate"
+              v-model="clubDetails.dateFin"
+              id="dateFin"
             />
           </div>
         </div>
@@ -169,7 +176,7 @@ const searchResults = ref([]);
 const selectedBook = ref(null);
 const clubDetails = ref({
   description: "",
-  lancementDate: "",
+  dateFin: "",
 });
 
 const books = [
@@ -327,7 +334,7 @@ const removeSelectedBook = () => {
   selectedBook.value = null;
   clubDetails.value = {
     description: "",
-    lancementDate: "",
+    dateFin: "",
   };
 };
 const searchBooks = () => {
