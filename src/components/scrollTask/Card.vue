@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-0 flex justify-center items-center max-sm:gap-x-0 gap-x-5 w-full border-y border-gray-300 bg-gray-100 z-20"
+    class="sticky top-0 flex justify-center items-center max-sm:gap-x-0 gap-x-5 w-full border-y border-gray-300 bg-gray-100 z-10"
   >
     <div
       :class="{

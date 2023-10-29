@@ -348,7 +348,7 @@ const searchBooks = () => {
   console.log(search.value);
   if (search.value === "") {
     searchResults.value = [];
-    return;
+    return; 
   }
 
   searchResults.value = books.filter((book) =>

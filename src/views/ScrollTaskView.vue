@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-x-5">
     <div class="fixed left-0 w-1/12 h-screen bg-blue-200 py-5 z-30">
-      <div class="w-fit flex flex-col gap-y-5 items-center mx-auto">
+      <div class="relative w-fit flex flex-col gap-y-5 items-center mx-auto">
         <AddBookModal
           :is-open="isOpenAddBookModal"
           @close-modal="closeModal('addBookModal')"
@@ -78,8 +78,10 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-col gap-y-10 fixed right-0 w-4/12 px-3 max-md:hidden h-screen ">
-      <ActivityMap/>
+    <div
+      class="flex flex-col gap-y-10 fixed right-0 w-4/12 px-3 max-md:hidden h-screen z-20"
+    >
+      <ActivityMap />
     </div>
   </div>
 </template>
