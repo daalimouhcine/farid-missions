@@ -43,9 +43,18 @@
                 <button
                   type="submit"
                   class="h-fit flex gap-x-1 font-serif items-center text-xs bg-[#9C5759] hover:bg-[#714042] transition-colors text-gray-100 font-semibold py-1.5 px-3 rounded-lg"
-                >
+                  v-if="!selectedClub.isParticipant"
+                  >
                   Participate
                 </button>
+                <button
+                  type="submit"
+                  class="h-fit flex gap-x-1 font-serif items-center text-xs bg-[#AFD4AC] hover:bg-[#80ae7d] transition-colors text-gray-800 font-semibold py-1.5 max-md:px-3 px-5 rounded-lg"
+                  v-else
+                  >
+                  On Time ?
+                </button>
+                
               </div>
 
               <p class="text-zinc-600 max-sm:text-sm">
@@ -86,27 +95,29 @@
               <div
                 class="rounded-sm h-3.5 w-3 bg-[#710F11] absolute top-1/2 -translate-y-1/2 -right-2"
               >
-              <div
-                class="absolute w-fit flex gap-x-2 mt-8 right-[80%] -translate-x-full"
-              >
-                <img
-                  :src="selectedClub.creator.avatar"
-                  class="w-10 h-10 rounded-md"
-                />
-                <img
-                  :src="selectedClub.creator.avatar"
-                  class="w-10 h-10 rounded-md"
-                />
                 <div
-                  class="relative h-10 w-10 min-w-10 min-w-max px-1 grid place-content-center border-2 border-gray-400 rounded-md"
+                  class="absolute w-fit flex gap-x-2 mt-8 right-[80%] -translate-x-full"
                 >
-                  <p class="font-semibold">+ {{ selectedClub.postsNumber }}</p>
+                  <img
+                    :src="selectedClub.creator.avatar"
+                    class="w-10 h-10 rounded-md"
+                  />
+                  <img
+                    :src="selectedClub.creator.avatar"
+                    class="w-10 h-10 rounded-md"
+                  />
                   <div
-                    class="absolute -top-[13px] left-1/2 -translate-x-1/2 h-0 w-0 border-x-8 border-x-transparent border-b-[13px] border-b-gray-400"
-                  ></div>
+                    class="relative h-10 w-10 min-w-10 min-w-max px-1 grid place-content-center border-2 border-gray-400 rounded-md"
+                  >
+                    <p class="font-semibold">
+                      + {{ selectedClub.postsNumber }}
+                    </p>
+                    <div
+                      class="absolute -top-[13px] left-1/2 -translate-x-1/2 h-0 w-0 border-x-8 border-x-transparent border-b-[13px] border-b-gray-400"
+                    ></div>
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
             <div
               class="w-full flex justify-between absolute text-[10px] mt-1 font-semibold px-2"
