@@ -104,7 +104,8 @@ const getProgressBarWidth = (dateStart, dateFin) => {
   const percentage = Math.floor(
     ((totalDays - remainingDays) / totalDays) * 100
   );
-  return percentage;
+  console.log(percentage);
+  return percentage > 100 ? 100 : percentage;
 };
 
 const getNumberOfDaysRemaining = (dateStart, dateFin) => {
@@ -116,7 +117,7 @@ const getNumberOfDaysRemaining = (dateStart, dateFin) => {
   const numberOfDaysRemaining = Math.floor(
     remainingDays / (1000 * 60 * 60 * 24)
   );
-  return numberOfDaysRemaining;
+  return numberOfDaysRemaining < 0 ? 0 : numberOfDaysRemaining;
 };
 
 const selectedClub = ref({

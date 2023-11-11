@@ -44,17 +44,16 @@
                   type="submit"
                   class="h-fit flex gap-x-1 font-serif items-center text-xs bg-[#9C5759] hover:bg-[#714042] transition-colors text-gray-100 font-semibold py-1.5 px-3 rounded-lg"
                   v-if="!selectedClub.isParticipant"
-                  >
+                >
                   Participate
                 </button>
                 <button
                   type="submit"
                   class="h-fit flex gap-x-1 font-serif items-center text-xs bg-[#AFD4AC] hover:bg-[#80ae7d] transition-colors text-gray-800 font-semibold py-1.5 max-md:px-3 px-5 rounded-lg"
                   v-else
-                  >
+                >
                   On Time ?
                 </button>
-                
               </div>
 
               <p class="text-zinc-600 max-sm:text-sm">
@@ -178,17 +177,20 @@ const getProgressBarWidth = (dateStart, dateFin) => {
   const percentage = Math.floor(
     ((totalDays - remainingDays) / totalDays) * 100
   );
-  return percentage;
+  console.log(percentage);
+  return percentage > 100 ? 100 : percentage;
 };
 
 const getNumberOfDaysRemaining = (dateStart, dateFin) => {
+  const dateStartInMs = new Date(dateStart).getTime();
   const dateFinInMs = new Date(dateFin).getTime();
   const currentDateInMs = new Date().getTime();
+  const totalDays = dateFinInMs - dateStartInMs;
   const remainingDays = dateFinInMs - currentDateInMs;
   const numberOfDaysRemaining = Math.floor(
     remainingDays / (1000 * 60 * 60 * 24)
   );
-  return numberOfDaysRemaining;
+  return numberOfDaysRemaining < 0 ? 0 : numberOfDaysRemaining;
 };
 
 const props = defineProps(["isOpen", "selectedClub"]);
