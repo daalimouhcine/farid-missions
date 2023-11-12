@@ -1,5 +1,5 @@
 <template>
-  <div class="z-20">
+  <div class="z-10">
     <button
       class="w-fit h-fit text-white bg-[#9C5759] hover:bg-[#714042] p-1 rounded-md"
       @click="openSearch"

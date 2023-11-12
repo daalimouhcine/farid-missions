@@ -9,7 +9,7 @@
     <div
       :class="[
         [!isOpen ? 'hidden' : 'flex'],
-        'w-screen h-screen bg-gray-800/25 fixed left-0 top-0',
+        'w-screen h-screen bg-gray-800/25 fixed z-50 left-0 top-0',
       ]"
     >
       <div
