@@ -81,6 +81,7 @@
     <div
       class="flex flex-col gap-y-10 fixed right-0 w-4/12 px-3 max-md:hidden h-screen z-20"
     >
+      <SearchModal />
       <ActivityMap />
     </div>
   </div>
@@ -96,6 +97,7 @@ import AddBookModal from "../components/modalForms/AddBookModal.vue";
 import CreatePostModal from "../components/modalForms/CreatePostModal.vue";
 import LaunchClubModal from "../components/modalForms/LaunchClubModal.vue";
 import ActivityMap from "../components/rightContent/ActivityMap.vue";
+import SearchModal from "../components/rightContent/search/SearchModal.vue";
 
 const isOpenAddBookModal = ref(false);
 const isOpenCreatePostModal = ref(false);

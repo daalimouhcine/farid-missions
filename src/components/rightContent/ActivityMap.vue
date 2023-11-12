@@ -95,6 +95,8 @@ import PersonsIcon from "../../icons/PersonsIcon.vue";
 import { ref } from "vue";
 import ClubModal from "./ClubModal.vue";
 
+import clubs from "../../../data/clubs.json";
+
 const getProgressBarWidth = (dateStart, dateFin) => {
   const dateStartInMs = new Date(dateStart).getTime();
   const dateFinInMs = new Date(dateFin).getTime();
@@ -114,7 +116,7 @@ const getNumberOfDaysRemaining = (dateStart, dateFin) => {
   const currentDateInMs = new Date().getTime();
   const totalDays = dateFinInMs - dateStartInMs;
   const remainingDays = dateFinInMs - currentDateInMs;
-  const numberOfDaysRemaining = Math.floor(
+  const numberOfDaysRemaining = Math.ceil(
     remainingDays / (1000 * 60 * 60 * 24)
   );
   return numberOfDaysRemaining < 0 ? 0 : numberOfDaysRemaining;
@@ -144,198 +146,6 @@ const selectedClub = ref({
 });
 
 const modalIsOpen = ref(false);
-const clubs = ref([
-  {
-    bookDetails: {
-      title: "The Lord of the Rings",
-      persons: ["Nir Eyal", "Ryan Hoover"],
-      coverImage:
-        "https://m.media-amazon.com/images/I/91DGwmaFdxL._AC_UY327_FMwebp_QL65_.jpg",
-      publishedDate: "1954-07-29",
-      publisher: "George Allen & Unwin",
-      isbn: "0395489318",
-    },
-    creator: {
-      name: "Nir Eyal",
-      avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    clubDetails: {
-      description:
-        "The Lord of the Rings is an epic high-fantasy novel written by English author and scholar J. R. R. Tolkien. The story began as a sequel to Tolkien's 1937 fantasy novel The Hobbit, but eventually developed into a much larger work.",
-      dateStart: "2023-10-29",
-      dateFin: "2023-11-08",
-    },
-    participantNumber: 589,
-    postsNumber: 25,
-    isParticipant: false,
-  },
-  {
-    bookDetails: {
-      title: "The Hobbit",
-      persons: ["Nir Eyal", "Ryan Hoover"],
-      coverImage: "https://m.media-amazon.com/images/I/815k7sxg6zL._SY466_.jpg",
-      publishedDate: "1937-09-21",
-      publisher: "George Allen & Unwin",
-      isbn: "0345339681",
-    },
-    creator: {
-      name: "Nir Eyal",
-      avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    clubDetails: {
-      description:
-        "The Hobbit, or There and Back Again is a children's fantasy novel by English author J. R. R. Tolkien. It was published on 21 September 1937 to wide critical acclaim, being nominated for the Carnegie Medal and awarded a prize from the New York Herald Tribune for best juvenile fiction.",
-      dateStart: "2023-10-25",
-      dateFin: "2023-11-13",
-    },
-    participantNumber: 589,
-    postsNumber: 89,
-    isParticipant: true,
-  },
-  {
-    bookDetails: {
-      title: "The Fellowship of the Ring",
-      persons: ["Nir Eyal", "Ryan Hoover"],
-      coverImage: "https://m.media-amazon.com/images/I/91ydFIymD4L._SY342_.jpg",
-      publishedDate: "1954-07-29",
-      publisher: "George Allen & Unwin",
-      isbn: "0618346252",
-    },
-    creator: {
-      name: "Nir Eyal",
-      avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    clubDetails: {
-      description:
-        "The Fellowship of the Ring is the first of three volumes of the epic novel The Lord of the Rings by the English author J. R. R. Tolkien. It is followed by The Two Towers and The Return of the King.",
-      dateStart: "2023-10-15",
-      dateFin: "2023-11-01",
-    },
-    participantNumber: 422,
-    postsNumber: 60,
-    isParticipant: false,
-  },
-  {
-    bookDetails: {
-      title: "The Two Towers",
-      persons: ["Nir Eyal", "Ryan Hoover"],
-      coverImage:
-        "https://m.media-amazon.com/images/I/81hjPZ5axOL._AC_UY327_FMwebp_QL65_.jpg",
-      publishedDate: "1954-11-11",
-      publisher: "George Allen & Unwin",
-      isbn: "0007129718",
-    },
-    creator: {
-      name: "Nir Eyal",
-      avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    clubDetails: {
-      description:
-        "The Two Towers is the second volume of J. R. R. Tolkien's high fantasy novel The Lord of the Rings. It is preceded by The Fellowship of the Ring and followed by The Return of the King.",
-      dateStart: "2023-10-22",
-      dateFin: "2023-11-07",
-    },
-    participantNumber: 589,
-    postsNumber: 10,
-    isParticipant: false,
-  },
-  {
-    bookDetails: {
-      title: "The Return of the King",
-      persons: ["Nir Eyal", "Ryan Hoover"],
-      coverImage:
-        "https://m.media-amazon.com/images/I/714ifTQtqwL._AC_UY327_FMwebp_QL65_.jpg",
-      publishedDate: "1955-10-20",
-      publisher: "George Allen & Unwin",
-      isbn: "0618129111",
-    },
-    creator: {
-      name: "Nir Eyal",
-      avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    clubDetails: {
-      description:
-        "The Return of the King is the third and final volume of J. R. R. Tolkien's The Lord of the Rings, following The Fellowship of the Ring and The Two Towers. The story begins in the kingdom of Gondor, which is soon to be attacked by the Dark Lord Sauron.",
-      dateStart: "2023-10-19",
-      dateFin: "2023-11-10",
-    },
-    participantNumber: 589,
-    postsNumber: 35,
-    isParticipant: true,
-  },
-  {
-    bookDetails: {
-      title: "The Silmarillion",
-      persons: ["Nir Eyal", "Ryan Hoover"],
-      coverImage:
-        "https://m.media-amazon.com/images/I/91d9vnqoupL._AC_UY327_FMwebp_QL65_.jpg",
-      publishedDate: "1977-09-15",
-      publisher: "George Allen & Unwin",
-      isbn: "0618391118",
-    },
-    creator: {
-      name: "Nir Eyal",
-      avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    clubDetails: {
-      description:
-        "The Silmarillion is a collection of mythopoeic works by English writer J. R. R. Tolkien, edited and published posthumously by his son, Christopher Tolkien, in 1977, with assistance from Guy Gavriel Kay.",
-      dateStart: "2023-10-25",
-      dateFin: "2023-11-15",
-    },
-    participantNumber: 589,
-    postsNumber: 28,
-    isParticipant: false,
-  },
-  {
-    bookDetails: {
-      title: "Unfinished Tales of Númenor and Middle-earth",
-      persons: ["Nir Eyal", "Ryan Hoover"],
-      coverImage:
-        "https://m.media-amazon.com/images/I/810Vqx3DKqL._AC_UY327_FMwebp_QL65_.jpg",
-      publishedDate: "1980-10-01",
-      publisher: "George Allen & Unwin",
-      isbn: "0618083510",
-    },
-    creator: {
-      name: "Nir Eyal",
-      avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    clubDetails: {
-      description:
-        "Unfinished Tales of Númenor and Middle-earth is a collection of stories and essays by J. R. R. Tolkien that were never completed during his lifetime, but were edited by his son Christopher Tolkien and published in 1980.",
-      dateStart: "2023-10-01",
-      dateFin: "2023-11-01",
-    },
-    participantNumber: 589,
-    postsNumber: 49,
-    isParticipant: false,
-  },
-  {
-    bookDetails: {
-      title: "The Children of Húrin",
-      persons: ["Nir Eyal", "Ryan Hoover"],
-      coverImage:
-        "https://m.media-amazon.com/images/I/91vB6Qe2rfL._AC_UY327_FMwebp_QL65_.jpg",
-      publishedDate: "2007-04-17",
-      publisher: "HarperCollins",
-      isbn: "0547928211",
-    },
-    creator: {
-      name: "Nir Eyal",
-      avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d",
-    },
-    clubDetails: {
-      description:
-        "The Children of Húrin is an epic fantasy novel which forms the completion of a tale by J. R. R. Tolkien. He wrote the original version of the story in the late 1910s, revised it several times later, but did not complete it before his death in 1973.",
-      dateStart: "2023-10-20",
-      dateFin: "2023-11-10",
-    },
-    participantNumber: 589,
-    postsNumber: 52,
-    isParticipant: true,
-  },
-]);
 
 const openModal = (club) => {
   document.body.classList.add("overflow-hidden");

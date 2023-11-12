@@ -247,52 +247,10 @@ import UserIcon from "../../icons/UserIcon.vue";
 import BarCodeIcon from "../../icons/BarCodeIcon.vue";
 import GalleryAddIcon from "../../icons/GalleryAddIcon.vue";
 
+import languageOptions from "../../../data/languageOptions.json";
+
 const props = defineProps(["isOpen"]);
 const emits = defineEmits(["closeModal"]);
-
-const languageOptions = ref([
-  "English",
-  "French",
-  "Spanish",
-  "German",
-  "Italian",
-  "Portuguese",
-  "Russian",
-  "Chinese",
-  "Japanese",
-  "Korean",
-  "Arabic",
-  "Turkish",
-  "Hindi",
-  "Bengali",
-  "Punjabi",
-  "Urdu",
-  "Persian",
-  "Indonesian",
-  "Vietnamese",
-  "Thai",
-  "Swahili",
-  "Dutch",
-  "Polish",
-  "Romanian",
-  "Greek",
-  "Hungarian",
-  "Czech",
-  "Slovak",
-  "Finnish",
-  "Swedish",
-  "Danish",
-  "Norwegian",
-  "Icelandic",
-  "Latvian",
-  "Lithuanian",
-  "Estonian",
-  "Maltese",
-  "Albanian",
-  "Macedonian",
-  "Bulgarian",
-  "Serbian",
-]);
 
 const previewImage = ref(null);
 // single ref for all inputs

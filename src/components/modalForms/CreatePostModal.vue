@@ -179,6 +179,9 @@ import { ref } from "vue";
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiClose, mdiMagnify } from "@mdi/js";
 import OpenBookIcon from "../../icons/OpenBookIcon.vue";
+
+import books from "../../../data/books.json";
+
 const props = defineProps(["isOpen"]);
 const emits = defineEmits(["closeModal"]);
 
@@ -188,156 +191,7 @@ const selectedBook = ref(null);
 const pageNumber = ref(253);
 const postText = ref("");
 
-const books = [
-  {
-    id: 1,
-    title: "The Lord of the Rings",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://m.media-amazon.com/images/I/91DGwmaFdxL._AC_UY327_FMwebp_QL65_.jpg",
-    publishedDate: "1954-07-29",
-    publisher: "George Allen & Unwin",
-    isbn: "0395489318",
-  },
-  {
-    id: 2,
-    title: "The Hobbit",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage: "https://m.media-amazon.com/images/I/815k7sxg6zL._SY466_.jpg",
-    publishedDate: "1937-09-21",
-    publisher: "George Allen & Unwin",
-    isbn: "0345339681",
-  },
-  {
-    id: 3,
-    title: "The Fellowship of the Ring",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage: "https://m.media-amazon.com/images/I/91ydFIymD4L._SY342_.jpg",
-    publishedDate: "1954-07-29",
-    publisher: "George Allen & Unwin",
-    isbn: "0618346252",
-  },
-  {
-    id: 4,
-    title: "The Two Towers",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://m.media-amazon.com/images/I/81hjPZ5axOL._AC_UY327_FMwebp_QL65_.jpg",
-    publishedDate: "1954-11-11",
-    publisher: "George Allen & Unwin",
-    isbn: "0007129718",
-  },
-  {
-    id: 5,
-    title: "The Return of the King",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://m.media-amazon.com/images/I/714ifTQtqwL._AC_UY327_FMwebp_QL65_.jpg",
-    publishedDate: "1955-10-20",
-    publisher: "George Allen & Unwin",
-    isbn: "0618129111",
-  },
-  {
-    id: 6,
-    title: "The Silmarillion",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://m.media-amazon.com/images/I/91d9vnqoupL._AC_UY327_FMwebp_QL65_.jpg",
-    publishedDate: "1977-09-15",
-    publisher: "George Allen & Unwin",
-    isbn: "0618391118",
-  },
-  {
-    id: 7,
-    title: "Unfinished Tales of Númenor and Middle-earth",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://m.media-amazon.com/images/I/810Vqx3DKqL._AC_UY327_FMwebp_QL65_.jpg",
-    publishedDate: "1980-10-01",
-    publisher: "George Allen & Unwin",
-    isbn: "0618083510",
-  },
-  {
-    id: 8,
-    title: "The Children of Húrin",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://m.media-amazon.com/images/I/91vB6Qe2rfL._AC_UY327_FMwebp_QL65_.jpg",
-    publishedDate: "2007-04-17",
-    publisher: "HarperCollins",
-    isbn: "0547928211",
-  },
-  {
-    id: 9,
-    title: "Beren and Lúthien",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://m.media-amazon.com/images/I/81NcTZMOLML._AC_UY327_FMwebp_QL65_.jpg",
-    publishedDate: "2017-06-01",
-    publisher: "HarperCollins",
-    isbn: "1328791823",
-  },
-  {
-    id: 10,
-    title: "The Fall of Gondolin",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://m.media-amazon.com/images/I/91+KAYxBMNL._AC_UY327_FMwebp_QL65_.jpg",
-    publishedDate: "2018-08-30",
-    publisher: "HarperCollins",
-    isbn: "1328613049",
-  },
-  {
-    id: 11,
-    title: "The Hobbit, or There and Back Again",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://m.media-amazon.com/images/I/91ZbGMgpxOL._AC_UY327_FMwebp_QL65_.jpg",
-    publishedDate: "1937-09-21",
-    publisher: "George Allen & Unwin",
-    isbn: "0345339681",
-  },
-  {
-    id: 12,
-    title: "The Fellowship of the Ring",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://m.media-amazon.com/images/I/91ydFIymD4L._AC_UY327_FMwebp_QL65_.jpg",
-    publishedDate: "1954-07-29",
-    publisher: "George Allen & Unwin",
-    isbn: "0618346252",
-  },
-  {
-    id: 13,
-    title: "The Two Towers",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://m.media-amazon.com/images/I/81hjPZ5axOL._AC_UY327_FMwebp_QL65_.jpg",
-    publishedDate: "1954-11-11",
-    publisher: "George Allen & Unwin",
-    isbn: "0007129718",
-  },
-  {
-    id: 14,
-    title: "The Return of the King",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://m.media-amazon.com/images/I/714ifTQtqwL._AC_UY327_FMwebp_QL65_.jpg",
-    publishedDate: "1955-10-20",
-    publisher: "George Allen & Unwin",
-    isbn: "0618129111",
-  },
-  {
-    id: 15,
-    title: "Harry Potter and the Philosopher's Stone",
-    persons: ["Nir Eyal", "Ryan Hoover"],
-    coverImage:
-      "https://images-na.ssl-images-amazon.com/images/I/51UoqRAxwEL._SX331_BO1,204,203,200_.jpg",
-    publishedDate: "1997-06-26",
-    publisher: "Bloomsbury",
-    isbn: "0747532699",
-  },
-];
+
 
 const removeSelectedBook = () => {
   selectedBook.value = null;
