@@ -1,5 +1,5 @@
 <template>
-  <div class="z-10">
+  <div class="z-30">
     <button
       class="w-fit h-fit text-white bg-[#9C5759] hover:bg-[#714042] p-1 rounded-md"
       @click="openSearch"
@@ -143,7 +143,6 @@ const isOpen = ref(false);
 const searchAutoComplete = ref([]);
 const searchBooksResult = ref([]);
 
-
 const searchBooks = () => {
   if (search.value) {
     searchAutoComplete.value = booksTitle.filter((book) =>
@@ -153,7 +152,6 @@ const searchBooks = () => {
     searchBooksResult.value = books.filter((book) =>
       book.title.toLowerCase().startsWith(search.value.toLowerCase())
     );
-    
   } else {
     searchAutoComplete.value = [];
     searchBooksResult.value = [];
@@ -173,8 +171,12 @@ const emptySearch = () => {
 };
 const openSearch = () => {
   isOpen.value = true;
+  document.body.classList.add("overflow-hidden");
+  document.getElementById("right-content").classList.remove("z-30");
 };
 const closeSearch = () => {
+  document.body.classList.remove("overflow-hidden");
+  document.getElementById("right-content").classList.add("z-30");
   isOpen.value = false;
   search.value = "";
   searchAutoComplete.value = [];

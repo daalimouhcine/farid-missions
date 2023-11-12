@@ -4,7 +4,7 @@
     :selectedClub="selectedClub"
     @closeModal="closeModal"
   />
-  <div class="w-full h-3/4 mt-auto">
+  <div class="w-full h-3/4 mt-auto relative">
     <div class="flex w-full items-center mb-5">
       <h3 class="text-2xl min-w-max self-end">Activity Map</h3>
       <hr class="w-full h-0.5 mt-4 mx-5 rounded-full bg-zinc-400" />
@@ -148,11 +148,13 @@ const selectedClub = ref({
 const modalIsOpen = ref(false);
 
 const openModal = (club) => {
+  document.getElementById("right-content").classList.remove("z-30");
   document.body.classList.add("overflow-hidden");
   selectedClub.value = club;
   modalIsOpen.value = true;
 };
 const closeModal = () => {
+  document.getElementById("right-content").classList.add("z-30");
   document.body.classList.remove("overflow-hidden");
   modalIsOpen.value = false;
   selectedClub.value = {

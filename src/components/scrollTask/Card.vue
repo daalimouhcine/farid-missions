@@ -4,7 +4,8 @@
   >
     <div
       :class="{
-        '-translate-x-14 bg-gradient-to-r from-white via-gray-50 to-gray-100': isScrolled,
+        '-translate-x-14 bg-gradient-to-r from-white via-gray-50 to-gray-100':
+          isScrolled,
         'max-sm:-translate-x-16 max-md:-translate-x-20 -translate-x-24':
           !isScrolled,
         'w-1/12 transition-all duration-300 ease-linear': true,
