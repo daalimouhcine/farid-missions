@@ -143,15 +143,17 @@ const isOpen = ref(false);
 const searchAutoComplete = ref([]);
 const searchBooksResult = ref([]);
 
+
 const searchBooks = () => {
   if (search.value) {
-    searchAutoComplete.value = booksTitle
-      .filter((book) => book.toLowerCase().includes(search.value.toLowerCase()))
-      .slice(0, 10);
+    searchAutoComplete.value = booksTitle.filter((book) =>
+      book.toLowerCase().startsWith(search.value.toLowerCase())
+    );
 
     searchBooksResult.value = books.filter((book) =>
-      book.title.toLowerCase().includes(search.value.toLowerCase())
+      book.title.toLowerCase().startsWith(search.value.toLowerCase())
     );
+    
   } else {
     searchAutoComplete.value = [];
     searchBooksResult.value = [];
