@@ -6,33 +6,14 @@
           :is-open="isOpenAddBookModal"
           @close-modal="closeModal('addBookModal')"
         />
-        <button
-          @click="openModal('addBookModal')"
-          class="w-full bg-gray-100 hover:bg-gray-300 rounded-md border-2 border-gray-800 px-3 py-1"
-        >
-          Add
-        </button>
         <LaunchClubModal
           :is-open="isOpenLaunchClubModal"
           @close-modal="closeModal('launchClubModal')"
         />
-        <button
-          @click="openModal('launchClubModal')"
-          class="w-full bg-gray-100 hover:bg-gray-300 rounded-md border-2 border-gray-800 px-3 py-1"
-        >
-          Launch
-        </button>
-
         <CreatePostModal
           :is-open="isOpenCreatePostModal"
           @close-modal="closeModal('createPostModal')"
         />
-        <button
-          @click="openModal('createPostModal')"
-          class="w-full bg-gray-100 hover:bg-gray-300 rounded-md border-2 border-gray-800 px-3 py-1"
-        >
-          Create
-        </button>
       </div>
     </div>
     <div
@@ -146,36 +127,6 @@ const items = [
     elements: Array(6).fill(0),
   },
 ];
-
-const openModal = (modalName) => {
-  document.body.classList.add("overflow-hidden");
-  switch (modalName) {
-    case "addBookModal":
-      isOpenAddBookModal.value = true;
-      break;
-    case "createPostModal":
-      isOpenCreatePostModal.value = true;
-      break;
-    case "launchClubModal":
-      isOpenLaunchClubModal.value = true;
-      break;
-  }
-};
-
-const closeModal = (modalName) => {
-  document.body.classList.remove("overflow-hidden");
-  switch (modalName) {
-    case "addBookModal":
-      isOpenAddBookModal.value = false;
-      break;
-    case "createPostModal":
-      isOpenCreatePostModal.value = false;
-      break;
-    case "launchClubModal":
-      isOpenLaunchClubModal.value = false;
-      break;
-  }
-};
 
 onMounted(() => {
   const items = document.querySelectorAll(".item");
